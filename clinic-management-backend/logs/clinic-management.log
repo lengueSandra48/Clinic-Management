@@ -1,0 +1,215 @@
+2025-05-29 14:57:32 [main] INFO  c.t.c.ClinicManagementBackendApplication - Starting ClinicManagementBackendApplication using Java 22.0.1 with PID 13216 (D:\Projects_folder\48\clinic-management\clinic-management-backend\target\classes started by HP EliteBook in D:\Projects_folder\48\clinic-management\clinic-management-backend)
+2025-05-29 14:57:32 [main] INFO  c.t.c.ClinicManagementBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-29 14:57:34 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-29 14:57:34 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 31 ms. Found 0 JPA repository interfaces.
+2025-05-29 14:57:35 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-05-29 14:57:35 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-29 14:57:35 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-05-29 14:57:35 [main] INFO  o.a.c.c.C.[.[.[/api-clinic] - Initializing Spring embedded WebApplicationContext
+2025-05-29 14:57:35 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2766 ms
+2025-05-29 14:57:36 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-29 14:57:36 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-05-29 14:57:36 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-05-29 14:57:37 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-29 14:57:37 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-05-29 14:57:37 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6e090aaa
+2025-05-29 14:57:37 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-05-29 14:57:37 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-29 14:57:38 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-29 14:57:38 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-29 14:57:38 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-05-29 14:57:38 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 2 mappings in 'requestMappingHandlerMapping'
+2025-05-29 14:57:39 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-05-29 14:57:39 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-05-29 14:57:39 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-05-29 14:57:39 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-29 14:57:40 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/api-clinic'
+2025-05-29 14:57:40 [main] INFO  c.t.c.ClinicManagementBackendApplication - Started ClinicManagementBackendApplication in 8.622 seconds (process running for 11.961)
+2025-05-29 14:58:39 [http-nio-8081-exec-4] INFO  o.a.c.c.C.[.[.[/api-clinic] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-29 14:58:39 [http-nio-8081-exec-4] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-05-29 14:58:39 [http-nio-8081-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2025-05-29 14:58:39 [http-nio-8081-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2025-05-29 14:58:39 [http-nio-8081-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2025-05-29 14:58:39 [http-nio-8081-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@2ff8d39b
+2025-05-29 14:58:39 [http-nio-8081-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@7fa85a55
+2025-05-29 14:58:39 [http-nio-8081-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-05-29 14:58:39 [http-nio-8081-exec-4] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2025-05-29 14:58:56 [http-nio-8081-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/api-clinic/?continue", parameters={masked}
+2025-05-29 14:58:56 [http-nio-8081-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-05-29 14:58:56 [http-nio-8081-exec-8] DEBUG o.s.w.s.r.ResourceHttpRequestHandler - Resource not found
+2025-05-29 14:58:56 [http-nio-8081-exec-8] DEBUG o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource .]
+2025-05-29 14:58:56 [http-nio-8081-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
+2025-05-29 14:58:56 [http-nio-8081-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/api-clinic/error?continue", parameters={masked}
+2025-05-29 14:58:56 [http-nio-8081-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2025-05-29 14:58:56 [http-nio-8081-exec-8] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, text/html;q=0.8]
+2025-05-29 14:58:56 [http-nio-8081-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
+2025-05-29 15:40:15 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m15s411ms968µs400ns).
+2025-05-29 18:11:08 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h10m52s34ms907µs).
+2025-05-29 19:40:29 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h22m18s979ms50µs600ns).
+2025-05-29 22:46:50 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-29 22:46:50 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-05-29 22:46:50 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-29 22:46:50 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-05-29 22:46:50 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-05-29 22:47:04 [main] INFO  c.t.c.ClinicManagementBackendApplication - Starting ClinicManagementBackendApplication using Java 22.0.1 with PID 20940 (D:\Projects_folder\48\clinic-management\clinic-management-backend\target\classes started by HP EliteBook in D:\Projects_folder\48\clinic-management\clinic-management-backend)
+2025-05-29 22:47:04 [main] INFO  c.t.c.ClinicManagementBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-29 22:47:06 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-29 22:47:06 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 28 ms. Found 0 JPA repository interfaces.
+2025-05-29 22:47:07 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-05-29 22:47:07 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-29 22:47:07 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-05-29 22:47:07 [main] INFO  o.a.c.c.C.[.[.[/api-clinic] - Initializing Spring embedded WebApplicationContext
+2025-05-29 22:47:07 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2920 ms
+2025-05-29 22:47:08 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-29 22:47:08 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-05-29 22:47:08 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-05-29 22:47:08 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-29 22:47:09 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-05-29 22:47:09 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@226e07e7
+2025-05-29 22:47:09 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-05-29 22:47:09 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-29 22:47:11 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-29 22:47:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2025-05-29 22:47:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - constraint "ukqbg6tjhoo3ltg0gwkngdi74v" of relation "patients" does not exist, skipping
+2025-05-29 22:47:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2025-05-29 22:47:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - constraint "uk6dotkott2kjsp8vw4d0m25fb7" of relation "users" does not exist, skipping
+2025-05-29 22:47:12 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-29 22:47:12 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-05-29 22:47:12 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 2 mappings in 'requestMappingHandlerMapping'
+2025-05-29 22:47:12 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-05-29 22:47:12 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-05-29 22:47:12 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-05-29 22:47:13 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-29 22:47:13 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/api-clinic'
+2025-05-29 22:47:13 [main] INFO  c.t.c.ClinicManagementBackendApplication - Started ClinicManagementBackendApplication in 10.33 seconds (process running for 12.183)
+2025-05-29 22:48:11 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-29 22:48:11 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-05-29 22:48:11 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-29 22:48:11 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-05-29 22:48:11 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-05-29 22:48:17 [main] INFO  c.t.c.ClinicManagementBackendApplication - Starting ClinicManagementBackendApplication using Java 22.0.1 with PID 11368 (D:\Projects_folder\48\clinic-management\clinic-management-backend\target\classes started by HP EliteBook in D:\Projects_folder\48\clinic-management\clinic-management-backend)
+2025-05-29 22:48:17 [main] INFO  c.t.c.ClinicManagementBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-29 22:48:18 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-29 22:48:18 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23 ms. Found 0 JPA repository interfaces.
+2025-05-29 22:48:19 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-05-29 22:48:19 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-29 22:48:19 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-05-29 22:48:19 [main] INFO  o.a.c.c.C.[.[.[/api-clinic] - Initializing Spring embedded WebApplicationContext
+2025-05-29 22:48:19 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2305 ms
+2025-05-29 22:48:19 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-29 22:48:19 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-05-29 22:48:19 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-05-29 22:48:20 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-29 22:48:20 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-05-29 22:48:20 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@11c3ce6a
+2025-05-29 22:48:20 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-05-29 22:48:21 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-29 22:48:23 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-29 22:48:24 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-29 22:48:24 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-05-29 22:48:24 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 2 mappings in 'requestMappingHandlerMapping'
+2025-05-29 22:48:24 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-05-29 22:48:25 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-05-29 22:48:25 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-05-29 22:48:25 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-29 22:48:25 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/api-clinic'
+2025-05-29 22:48:25 [main] INFO  c.t.c.ClinicManagementBackendApplication - Started ClinicManagementBackendApplication in 9.966 seconds (process running for 11.588)
+2025-05-29 22:49:05 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-29 22:49:05 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-05-29 22:49:05 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-29 22:49:05 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-05-29 22:49:05 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-05-29 22:49:11 [main] INFO  c.t.c.ClinicManagementBackendApplication - Starting ClinicManagementBackendApplication using Java 22.0.1 with PID 5184 (D:\Projects_folder\48\clinic-management\clinic-management-backend\target\classes started by HP EliteBook in D:\Projects_folder\48\clinic-management\clinic-management-backend)
+2025-05-29 22:49:11 [main] INFO  c.t.c.ClinicManagementBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-29 22:49:12 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-29 22:49:12 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23 ms. Found 0 JPA repository interfaces.
+2025-05-29 22:49:13 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-05-29 22:49:13 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-29 22:49:13 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-05-29 22:49:13 [main] INFO  o.a.c.c.C.[.[.[/api-clinic] - Initializing Spring embedded WebApplicationContext
+2025-05-29 22:49:13 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2317 ms
+2025-05-29 22:49:14 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-29 22:49:14 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-05-29 22:49:14 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-05-29 22:49:14 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-29 22:49:14 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-05-29 22:49:15 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@16b7e04a
+2025-05-29 22:49:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-05-29 22:49:15 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-29 22:49:17 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-29 22:49:17 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-29 22:49:18 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-05-29 22:49:18 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 2 mappings in 'requestMappingHandlerMapping'
+2025-05-29 22:49:18 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-05-29 22:49:18 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-05-29 22:49:18 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-05-29 22:49:18 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-29 22:49:19 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/api-clinic'
+2025-05-29 22:49:19 [main] INFO  c.t.c.ClinicManagementBackendApplication - Started ClinicManagementBackendApplication in 8.99 seconds (process running for 10.668)
+2025-05-29 22:53:49 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-29 22:53:49 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-05-29 22:53:49 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-29 22:53:49 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-05-29 22:53:49 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-05-29 22:53:58 [main] INFO  c.t.c.ClinicManagementBackendApplication - Starting ClinicManagementBackendApplication using Java 22.0.1 with PID 7712 (D:\Projects_folder\48\clinic-management\clinic-management-backend\target\classes started by HP EliteBook in D:\Projects_folder\48\clinic-management\clinic-management-backend)
+2025-05-29 22:53:58 [main] INFO  c.t.c.ClinicManagementBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-29 22:53:59 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-29 22:53:59 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25 ms. Found 0 JPA repository interfaces.
+2025-05-29 22:54:00 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-05-29 22:54:00 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-29 22:54:00 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-05-29 22:54:00 [main] INFO  o.a.c.c.C.[.[.[/api-clinic] - Initializing Spring embedded WebApplicationContext
+2025-05-29 22:54:00 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2260 ms
+2025-05-29 22:54:01 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-29 22:54:01 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-05-29 22:54:01 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-05-29 22:54:02 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-29 22:54:02 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-05-29 22:54:02 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@15914bb5
+2025-05-29 22:54:02 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-05-29 22:54:02 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-29 22:54:04 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-29 22:54:04 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-29 22:54:05 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-05-29 22:54:05 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 2 mappings in 'requestMappingHandlerMapping'
+2025-05-29 22:54:05 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-05-29 22:54:05 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-05-29 22:54:05 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-05-29 22:54:05 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-29 22:54:06 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/api-clinic'
+2025-05-29 22:54:06 [main] INFO  c.t.c.ClinicManagementBackendApplication - Started ClinicManagementBackendApplication in 8.995 seconds (process running for 10.591)
