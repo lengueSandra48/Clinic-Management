@@ -6,16 +6,22 @@ spring:
     password: sandra
   jpa:
     hibernate:
-      ddl-auto: create-drop
-    show-sql: true
+      ddl-auto: update
+    show-sql: false
     properties:
       hibernate:
-        format_sql: true
+        format_sql: false
   security:
-    user:
-      name: admin
-      password: password00
-      roles: ADMIN
+    #user:
+      #name: admin
+      #password: password00
+      #roles: ADMIN
+    filter:
+      order: 10
+
+jwt:
+  secret-key: 4cfab76ef14937c1c0ea519f8fc057a80fcd04a7430f8e8bcd0a7567c272e007b
+  expiration-time: 3600000  # 1 hours (in milliseconds)
 
 # Custom Clinic Management Configurations
 clinic:
@@ -24,6 +30,7 @@ clinic:
   working-hours:
     start: 08:00
     end: 17:00
+
 
 
 # Logging Configuration
