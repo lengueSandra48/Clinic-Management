@@ -32,24 +32,17 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // Public endpoints
                         .requestMatchers(
-                                "/api-clinic/auth/**",
-                                "/api-clinic/v2/api-docs",
-                                "/api-clinic/v3/api-docs/**",
-                                "/api-clinic/swagger-resources",
-                                "/api-clinic/swagger-resources/**",
-                                "/api-clinic/configuration/ui",
-                                "/api-clinic/configuration/security",
-                                "/api-clinic/swagger-ui/**",
-                                "/api-clinic/webjars/**",
-                                "/api-clinic/swagger-ui.html"
+                                "/auth/**",
+                                "/v2/api-docs",
+                                "/v3/api-docs/**",
+                                "/swagger-resources",
+                                "/swagger-resources/**",
+                                "/configuration/ui",
+                                "/configuration/security",
+                                "/swagger-ui/**",
+                                "/webjars/**",
+                                "/swagger-ui.html"
                         ).permitAll()
-
-                        // Role-based endpoints
-                        .requestMatchers("/api-clinic/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/api-clinic/doctor/**").hasRole("DOCTOR")
-                        .requestMatchers("/api-clinic/secretary/**").hasRole("SECRETARY")
-
-                        // All other requests require authentication
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
