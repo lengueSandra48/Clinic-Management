@@ -1,0 +1,79 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+## Backend specific
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+## Frontend specific
+
+# Node modules
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+*.tgz
+.DS_Store # macOS specific
+.eslintcache
+
+# build artifacts
+# For Windows
+.angular/cache
+tmp/
+out/
+
+# IDE specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.metadata/
+.tooling/
+
+# environments
+.env
+.env.local
+.env.*.local
+
+# test results
+coverage/
+*.spec.js
+*.spec.js.map
+
+# Logs
+*.log
+
+# Misc
+.env
+.DS_Store
