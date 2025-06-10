@@ -33,6 +33,18 @@ const routes: Routes = [
       {
         path: 'billing', // <--- NEW LAZY-LOADED ROUTE FOR BILLING
         loadChildren: () => import('./features/billing/billing-module').then(m => m.BillingModule)
+      },
+      {
+        path: 'prescription', // <--- NEW LAZY-LOADED ROUTE FOR PRESCRIPTION
+        loadChildren: () => import('./features/prescription/prescription-module').then(m => m.PrescriptionModule)
+      },
+      {
+        path: 'reports', // <--- NEW LAZY-LOADED ROUTE FOR REPORTS
+        loadChildren: () => import('./features/reports/reports-module').then(m => m.ReportsModule)
+      },
+      {
+        path: 'admin', // <--- NEW LAZY-LOADED ROUTE FOR ADMIN
+        loadChildren: () => import('./features/admin/admin-module').then(m => m.AdminModule)
       }
     ]
   },

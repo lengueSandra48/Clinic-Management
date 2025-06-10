@@ -1,0 +1,46 @@
+<div class="padding-md">
+  <h2>Reports & Analytics</h2>
+  <p>Access key insights and performance metrics for the clinic.</p>
+
+  <div *ngIf="loading" class="loading-indicator">
+    <p>Loading report summaries...</p>
+    <app-spinner></app-spinner>
+  </div>
+
+  <div *ngIf="!loading">
+    <app-card>
+      <div card-header>Patient Statistics</div>
+      <div card-body>
+        <p>Total active patients: <strong>{{ totalPatients }}</strong></p>
+        <p>New patients this month: <strong>{{ newPatientsMonth }}</strong></p>
+        <app-button buttonType="secondary" (click)="onViewPatientStats()">View Patient Reports</app-button>
+      </div>
+    </app-card>
+
+    <app-card>
+      <div card-header>Financial Overview</div>
+      <div card-body>
+        <p>Total revenue this month: <strong>${{ totalRevenueMonth | number:'1.2-2' }}</strong></p>
+        <p>Outstanding invoices: <strong>{{ outstandingInvoices }}</strong></p>
+        <app-button buttonType="secondary" (click)="onViewFinancials()">View Financial Reports</app-button>
+      </div>
+    </app-card>
+
+    <app-card>
+      <div card-header>Appointment Trends</div>
+      <div card-body>
+        <p>Total appointments this week: <strong>{{ appointmentsThisWeek }}</strong></p>
+        <p>Average daily appointments: <strong>{{ averageDailyAppointments | number:'1.1-1' }}</strong></p>
+        <app-button buttonType="secondary" (click)="onViewAppointmentsTrend()">View Appointment Reports</app-button>
+      </div>
+    </app-card>
+
+    <app-card>
+      <div card-header>Other Reports</div>
+      <div card-body>
+        <p>Explore additional custom or specialized reports.</p>
+        <app-button buttonType="info" (click)="onViewOtherReports()">Explore All Reports</app-button>
+      </div>
+    </app-card>
+  </div>
+</div>

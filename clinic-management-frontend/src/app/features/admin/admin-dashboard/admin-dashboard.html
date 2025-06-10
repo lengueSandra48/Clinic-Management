@@ -1,0 +1,47 @@
+<div class="padding-md">
+  <h2>Admin Dashboard</h2>
+  <p>Manage system settings, users, and roles.</p>
+
+  <div *ngIf="loading" class="loading-indicator">
+    <p>Loading admin summaries...</p>
+    <app-spinner></app-spinner>
+  </div>
+
+  <div *ngIf="!loading">
+    <app-card>
+      <div card-header>User Management</div>
+      <div card-body>
+        <p>Total active users: <strong>{{ totalUsers }}</strong></p>
+        <p>New users this month: <strong>{{ newUsersMonth }}</strong></p>
+        <app-button buttonType="secondary" routerLink="/admin/users">Manage Users</app-button>
+      </div>
+    </app-card>
+
+    <app-card>
+      <div card-header>Role & Permissions</div>
+      <div card-body>
+        <p>Number of defined roles: <strong>{{ totalRoles }}</strong></p>
+        <p>Review and assign permissions to roles.</p>
+        <app-button buttonType="secondary" routerLink="/admin/roles">Manage Roles</app-button>
+      </div>
+    </app-card>
+
+    <app-card>
+      <div card-header>System Settings</div>
+      <div card-body>
+        <p>Configure general application settings.</p>
+        <p>Last updated: <strong>{{ lastSettingsUpdate }}</strong></p>
+        <app-button buttonType="info" routerLink="/admin/settings">Configure Settings</app-button>
+      </div>
+    </app-card>
+
+    <app-card>
+      <div card-header>Audit Logs</div>
+      <div card-body>
+        <p>Review system activities and user actions.</p>
+        <p>Recent critical events: <strong>{{ criticalEvents }}</strong></p>
+        <app-button buttonType="warning" routerLink="/admin/audit-logs">View Audit Logs</app-button>
+      </div>
+    </app-card>
+  </div>
+</div>
