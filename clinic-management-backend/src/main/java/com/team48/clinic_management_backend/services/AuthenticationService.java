@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -24,18 +25,22 @@ public class AuthenticationService {
 
 
     public User signup(RegisterUserDto input){
+        //try to get the user roles
+        List<?> roleNames = input.getRoles() != null && !input.getRoles().isEmpty()
+                ? input.getRoles()
+                : List.of("USER");
 
-        //try to get the user role
-        var userRole = roleRepository.findByRoleName("ADMIN")
-                .orElseThrow(() -> new IllegalStateException("ROLE ADMIN was not initialized"));
+        // Get all roles (throws exception if any role not found)
+        List<Role> roles = roleNames.stream()
+                .map(roleName -> roleRepository.findByRoleName((String) roleName)
+                        .orElseThrow(() -> new IllegalArgumentException("Role " + roleName + " not found")))
+                .collect(Collectors.toList());
 
-        //Create user object and persists in database
         User user = User.builder()
                 .fullName(input.getFullName())
                 .email(input.getEmail())
                 .password(passwordEncoder.encode(input.getPassword())) //encode the user password
-                .isActive(false) //by default the account is not active
-                .roles(List.of(userRole))
+                .roles(roles)
                 .build();
         return userRepository.save(user);
     }

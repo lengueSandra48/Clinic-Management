@@ -35,11 +35,6 @@ public class JwtFilter extends OncePerRequestFilter {
            @NonNull FilterChain filterChain
     ) throws ServletException, IOException {
 
-        if (request.getServletPath().contains("/api-clinic/auth")){
-            filterChain.doFilter(request, response);
-            return;
-        }
-
         final String authHeader = request.getHeader(AUTHORIZATION);
 
         if (authHeader == null || !authHeader.startsWith("Bearer")){

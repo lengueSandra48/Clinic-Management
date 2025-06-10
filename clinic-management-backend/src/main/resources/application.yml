@@ -6,32 +6,22 @@ spring:
     password: sandra
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: false
     properties:
       hibernate:
         format_sql: false
-  security:
+  #security:
     #user:
       #name: admin
       #password: password00
       #roles: ADMIN
-    filter:
-      order: 10
+    #filter:
+      #order: 10
 
 jwt:
   secret-key: 4cfab76ef14937c1c0ea519f8fc057a80fcd04a7430f8e8bcd0a7567c272e007b
-  expiration-time: 3600000  # 1 hours (in milliseconds)
-
-# Custom Clinic Management Configurations
-clinic:
-  appointment:
-    max-days-ahead: 30 # Max days to schedule an appointment
-  working-hours:
-    start: 08:00
-    end: 17:00
-
-
+  expiration-time: 900000  # 15min (in milliseconds)
 
 # Logging Configuration
 logging:
@@ -46,5 +36,16 @@ logging:
 
 server:
   port: 8081
-  servlet:
-    context-path: /api-clinic
+  #servlet:
+    #context-path: /api-clinic
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    operationsSorter: method
+    tagsSorter: alpha
+    display-request-duration: true

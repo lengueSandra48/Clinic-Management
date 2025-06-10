@@ -5,12 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,11 +34,14 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-    private boolean isActive;
+    @UpdateTimestamp
+    private Date updatedAt;
+
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
 
+    @CreationTimestamp
     private LocalDateTime createdAt = LocalDateTime.now();
 
     @Override
