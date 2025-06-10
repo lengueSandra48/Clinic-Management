@@ -1,0 +1,48 @@
+<div class="padding-md">
+  <h2>Appointments</h2>
+  <p>Manage and view scheduled appointments.</p>
+
+  <div *ngIf="loading" class="loading-indicator">
+    <p>Loading appointments...</p>
+    <app-spinner></app-spinner>
+  </div>
+
+  <div *ngIf="!loading">
+    <app-card>
+      <div card-header>
+        <div class="card-header-content">
+          <span>Appointment List</span>
+          <app-button buttonType="primary" (click)="onAddAppointment()">Add Appointment</app-button>
+        </div>
+      </div>
+      <div card-body>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Patient</th>
+              <th>Doctor</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let appointment of appointments">
+              <td>{{ appointment.id }}</td>
+              <td>{{ appointment.patient }}</td>
+              <td>{{ appointment.doctor }}</td>
+              <td>{{ appointment.date }}</td>
+              <td>{{ appointment.time }}</td>
+              <td>{{ appointment.status }}</td>
+              <td>
+                <app-button buttonType="secondary" (click)="onViewDetails(appointment)">View</app-button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+</div>

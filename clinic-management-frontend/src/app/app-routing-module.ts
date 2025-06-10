@@ -5,18 +5,9 @@ import { Layout } from './layout/layout';
 // --- Placeholder Components for now ---
 // You'll replace these with your actual feature components later
 import { PlaceholderDashboard } from './placeholder-dashboard/placeholder-dashboard';
-import { PlaceholderPatients } from './placeholder-patients/placeholder-patients';
 // (Make sure these placeholder components are declared in app.module.ts)
 
 const routes: Routes = [
-  // --- PUBLIC ROUTES (e.g., Login, Registration) ---
-  // These routes typically do NOT use the main application layout.
-  // We'll add a 'login' route here later when we build the Auth feature.
-  // Example: { path: 'login', component: LoginComponent },
-
-  // --- AUTHENTICATED / MAIN APP ROUTES ---
-  // This is the main route that renders the LayoutComponent as the application shell.
-  // All 'children' routes will be displayed within the <router-outlet> of the LayoutComponent.
   {
     path: '', // This route will match the root path (e.g., 'yourdomain.com/')
     component: Layout, // The LayoutComponent is the main shell for these routes
@@ -31,6 +22,18 @@ const routes: Routes = [
         path: 'secretary', // <--- This is your new lazy-loaded route
         loadChildren: () => import('./features/secretary/secretary-module').then(m => m.SecretaryModule)
       },
+      {
+        path: 'doctor', // <--- NEW LAZY-LOADED ROUTE FOR DOCTOR
+        loadChildren: () => import('./features/doctor/doctor-module').then(m => m.DoctorModule)
+      },
+      {
+        path: 'appointment', // <-- ADDED APPOINTMENT ROUTE
+        loadChildren: () => import('./features/appointment/appointment-module').then(m => m.AppointmentModule)
+      },
+      {
+        path: 'billing', // <--- NEW LAZY-LOADED ROUTE FOR BILLING
+        loadChildren: () => import('./features/billing/billing-module').then(m => m.BillingModule)
+      }
     ]
   },
 

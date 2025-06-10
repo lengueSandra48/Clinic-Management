@@ -1,0 +1,29 @@
+<div class="padding-md">
+  <h2>Doctor Dashboard</h2>
+  <p>Welcome, Doctor! This is your central hub for patient care and management.</p>
+  <p>From here, you can access patient records, manage your daily appointments, and review lab results.</p>
+
+  <app-card>
+    <div card-header>Upcoming Appointments</div>
+    <div card-body>
+      <p>You have <strong>3</strong> appointments scheduled for today.</p>
+      <app-button buttonType="info" (click)="onViewAppointments()">View Today's Schedule</app-button>
+    </div>
+  </app-card>
+
+  <app-card>
+    <div card-header>New Lab Results</div>
+    <div card-body>
+      <p>There are <strong>5</strong> new lab results awaiting your review.</p>
+      <app-button buttonType="success" (click)="onReviewLabResults()">Review Results</app-button>
+    </div>
+  </app-card>
+
+  <app-card>
+    <div card-header>Active Patients</div>
+    <div card-body>
+      <p>You are currently managing <strong>120</strong> active patients.</p>
+      <app-button buttonType="secondary" (click)="onViewMyPatients()">View My Patients</app-button>
+    </div>
+  </app-card>
+</div>
