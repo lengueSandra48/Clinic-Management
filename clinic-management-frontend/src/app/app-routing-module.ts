@@ -12,6 +12,13 @@ const routes: Routes = [
     path: '', // This route will match the root path (e.g., 'yourdomain.com/')
     component: Layout, // The LayoutComponent is the main shell for these routes
     children: [
+      {
+    path: 'auth', // This will be the base path for login, register, etc.
+    loadChildren: () => import('./auth/auth-module').then(m => m.AuthModule)
+      },
+
+      //{ path: '**', redirectTo: 'auth/login' },
+
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // Redirect default to dashboard
       { path: 'dashboard', component: PlaceholderDashboard }, // Your dashboard view
       {
