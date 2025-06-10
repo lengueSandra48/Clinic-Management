@@ -1,0 +1,14 @@
+.app-footer {
+  background-color: #343a40; /* Match sidebar background */
+  color: #dee2e6;
+  padding: var(--spacing-md) var(--spacing-lg);
+  text-align: center;
+  font-size: 0.85rem;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0; /* Prevent footer from shrinking */
+
+  p {
+    margin: 0;
+    line-height: 1.5;
+  }
+}

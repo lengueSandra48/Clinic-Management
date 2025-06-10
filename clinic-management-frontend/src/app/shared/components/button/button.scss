@@ -1,0 +1,111 @@
+/* Base styles for all buttons */
+.app-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid transparent; /* Default transparent border */
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  display: inline-flex; /* Allows icon/text alignment */
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Space between icon and text if both are present */
+  white-space: nowrap; /* Prevent text wrap */
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3); /* Focus ring */
+  }
+}
+
+/* Button Type Styles */
+.app-button.primary {
+  background-color: #007bff; /* Clinic's primary blue */
+  color: white;
+  border-color: #007bff;
+
+  &:hover:not(:disabled) {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+}
+
+.app-button.secondary {
+  background-color: #6c757d; /* Grey */
+  color: white;
+  border-color: #6c757d;
+
+  &:hover:not(:disabled) {
+    background-color: #545b62;
+    border-color: #545b62;
+  }
+}
+
+.app-button.danger {
+  background-color: #dc3545; /* Red */
+  color: white;
+  border-color: #dc3545;
+
+  &:hover:not(:disabled) {
+    background-color: #c82333;
+    border-color: #c82333;
+  }
+}
+
+.app-button.link {
+  background: none;
+  color: #007bff;
+  border: none;
+  padding: 0;
+  text-decoration: underline; /* Makes it clear it's a link */
+
+  &:hover:not(:disabled) {
+    color: #0056b3;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+/* Button Size Styles */
+.app-button.small {
+  padding: 6px 12px;
+  font-size: 0.875rem;
+}
+
+.app-button.large {
+  padding: 12px 24px;
+  font-size: 1.125rem;
+}
+
+/* Disabled State */
+.app-button:disabled {
+  background-color: #e9ecef !important;
+  color: #6c757d !important;
+  border-color: #e9ecef !important;
+  cursor: not-allowed;
+  opacity: 0.65; /* Visually indicate disabled state */
+}
+
+/* Loading State */
+.app-button.loading {
+  cursor: wait;
+  pointer-events: none; /* Prevent clicks during loading */
+  color: transparent !important; /* Hide button text */
+
+  .spinner {
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Light border for spinner */
+    border-top-color: white; /* White top border for contrast */
+    border-radius: 50%;
+    width: 1em; /* Spinner size relative to font size */
+    height: 1em;
+    animation: spin 1s linear infinite; /* Spinner animation */
+    margin-right: 0; /* No margin when text is hidden */
+  }
+}
+
+/* Spinner animation for the button's internal spinner */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

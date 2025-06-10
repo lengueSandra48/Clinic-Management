@@ -1,0 +1,19 @@
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the shell takes at least full viewport height */
+  overflow: hidden; /* Prevent unwanted scrollbars from children */
+}
+
+.main-content-area {
+  display: flex;
+  flex: 1; /* Allows this area to grow and take available space */
+  overflow: hidden; /* Manages internal scrolling if needed */
+}
+
+.page-content {
+  flex: 1; /* Allows the content area to grow and take remaining width */
+  padding: var(--spacing-lg); /* Padding around your actual page content */
+  overflow-y: auto; /* Enable vertical scrolling for page content if it overflows */
+  background-color: #f4f7f6; /* A slightly different background for content area */
+}

@@ -1,0 +1,5 @@
+<div class="spinner-overlay" *ngIf="isVisible">
+  <div class="spinner" [ngClass]="size" [class.primary]="color === 'primary'" [class.accent]="color === 'accent'" [class.warn]="color === 'warn'">
+    <div class="spinner-border"></div>
+  </div>
+</div>

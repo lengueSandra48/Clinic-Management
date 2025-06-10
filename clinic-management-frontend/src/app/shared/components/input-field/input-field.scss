@@ -1,0 +1,51 @@
+.input-field-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem; /* Standard spacing below each input field */
+  width: 100%; /* Ensure it takes full width of its parent */
+
+  label {
+    margin-bottom: 0.3rem; /* Small space between label and input */
+    font-weight: 600; /* Slightly bolder label */
+    font-size: 0.95rem;
+    color: #343a40; /* Darker text for readability */
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 0.75rem 1rem; /* Generous padding for better usability */
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da; /* Light grey border */
+    border-radius: 0.3rem; /* Slightly more rounded corners */
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+
+    &:focus {
+      color: #495057;
+      background-color: #fff;
+      border-color: #80bdff; /* Primary blue on focus */
+      outline: 0;
+      box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25); /* Focus shadow */
+    }
+
+    /* Styles for invalid state */
+    &.is-invalid {
+      border-color: #dc3545; /* Red border for invalid state */
+      padding-right: calc(1.5em + 1rem); /* Space for potential validation icon (if added later) */
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5' stroke-width='.75'/%3e%3cpath stroke-linecap='round' d='M5.71 8.78L5.71 5.22m0-1.57v.83A1.57 1.57 0 0 0 4.14 5.22H4.08c-.03-.34-.14-.66-.32-.95a3.28 3.28 0 0 1-.66-1.74c-.19-.38-.42-.72-.7-.99a2.7 2.7 0 0 0-1.44-1.44c-.27-.28-.61-.51-.99-.7a3.28 3.28 0 0 1-1.74-.66H.86a1.57 1.57 0 0 0-1.57 1.57v.83a3.28 3.28 0 0 1-.66 1.74c-.19.38-.42.72-.7.99a2.7 2.7 0 0 0-1.44 1.44c-.27.28-.61.51-.99.7a3.28 3.28 0 0 1-1.74.66v.83a1.57 1.57 0 0 0 1.57 1.57h.83a3.28 3.28 0 0 1 .66 1.74c.19.38.42.72.7.99a2.7 2.7 0 0 0 1.44 1.44c.27.28.61.51.99.7a3.28 3.28 0 0 1 1.74.66h.83a1.57 1.57 0 0 0 1.57-1.57v-.83a3.28 3.28 0 0 1 .66-1.74c.19-.38.42-.72.7-.99a2.7 2.7 0 0 0 1.44-1.44c-.27-.28.61-.51.99-.7a3.28 3.28 0 0 1 1.74-.66v-.83a1.57 1.57 0 0 0-1.57-1.57z'/%3e%3cpath stroke-linecap='round' d='M6 3.22v3.56M6 8.78v.83'/%3e%3c/svg%3e"); /* Simple error icon */
+      background-repeat: no-repeat;
+      background-position: right calc(0.375em + 0.1875rem) center;
+      background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+    }
+  }
+
+  .error-message {
+    font-size: 0.8rem;
+    color: #dc3545; /* Red for error messages */
+    margin-top: 0.25rem; /* Small space above the error message */
+  }
+}

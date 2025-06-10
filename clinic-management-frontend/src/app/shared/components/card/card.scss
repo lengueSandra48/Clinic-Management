@@ -1,0 +1,37 @@
+.card {
+  background-color: #fff; /* White background for the card */
+  border: 1px solid #e0e0e0; /* Light grey border */
+  border-radius: 8px; /* Slightly more rounded corners for a softer look */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+  margin-bottom: 1.5rem; /* Space below each card */
+  overflow: hidden; /* Ensures content respects border-radius */
+}
+
+.card-header {
+  padding: 1rem 1.25rem; /* Padding inside the header */
+  background-color: #f8f9fa; /* Light grey background for header */
+  border-bottom: 1px solid #e0e0e0; /* Border separating header from body */
+  font-size: 1.15rem; /* Slightly larger font for title */
+  font-weight: 600; /* Bolder title */
+  color: #343a40; /* Darker text for readability */
+}
+
+.card-body {
+  padding: 1.25rem; /* Padding inside the body */
+  color: #495057; /* Standard text color */
+  line-height: 1.6; /* Improved readability for body text */
+}
+
+.card-footer {
+  padding: 1rem 1.25rem; /* Padding inside the footer */
+  background-color: #f8f9fa; /* Light grey background for footer */
+  border-top: 1px solid #e0e0e0; /* Border separating footer from body */
+  font-size: 0.9rem; /* Smaller font for footer text */
+  color: #6c757d; /* Lighter text for footer */
+
+  /* This makes the footer invisible if no content is projected into it */
+  &:empty {
+    padding: 0;
+    border-top: none;
+  }
+}

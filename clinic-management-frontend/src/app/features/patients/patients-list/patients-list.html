@@ -1,0 +1,69 @@
+<div class="padding-md">
+  <h2>Patient Management</h2>
+  <p>Overview of all registered patients in the clinic.</p>
+
+  <div *ngIf="loading" class="loading-indicator">
+    <p>Loading patient data...</p>
+    <app-spinner></app-spinner>
+  </div>
+
+  <div *ngIf="!loading">
+    <app-card>
+      <div card-header>
+        <div class="card-header-content">
+          <span>Patient List</span>
+          <app-button buttonType="primary" (click)="onAddPatient()">
+            Add New Patient
+          </app-button>
+        </div>
+      </div>
+      <div card-body>
+        <div class="search-bar">
+          <app-input-field
+            placeholder="Search by name or status..."
+            [ngModel]="searchTerm"
+            (ngModelChange)="onSearchChange($event)"
+          ></app-input-field>
+        </div>
+
+        <div class="patient-list-table">
+          <table *ngIf="filteredPatients.length > 0; else noPatients">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let patient of filteredPatients">
+                <td>{{ patient.id }}</td>
+                <td>{{ patient.name }}</td>
+                <td>{{ patient.dob }}</td>
+                <td>{{ patient.gender }}</td>
+                <td><span [ngClass]="{'status-active': patient.status === 'Active', 'status-inactive': patient.status === 'Inactive'}">{{ patient.status }}</span></td>
+                <td>
+                  <app-button buttonType="secondary" (click)="onViewPatientDetails(patient)">View</app-button>
+                  <app-button buttonType="info">Edit</app-button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <ng-template #noPatients>
+            <p class="no-results-message">No patients found matching your criteria.</p>
+          </ng-template>
+        </div>
+
+        <app-pagination
+          [currentPage]="currentPage"
+          totalPages="totalPages"
+          (pageChange)="onPageChange($event)"
+          *ngIf="totalPages > 1"
+        ></app-pagination>
+      </div>
+    </app-card>
+  </div>
+</div>

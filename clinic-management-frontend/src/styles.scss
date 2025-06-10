@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styles for the entire application */
+
+// Basic CSS Reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f7f6;
+  color: #333;
+}
+
+// Basic variables (you can expand on these)
+:root {
+  --primary-color: #007bff; // Blue
+  --secondary-color: #6c757d; // Gray
+  --success-color: #28a745; // Green
+  --danger-color: #dc3545; // Red
+  --warning-color: #ffc107; // Yellow
+  --info-color: #17a2b8; // Cyan
+
+  --text-dark: #333;
+  --text-light: #f8f9fa;
+  --bg-light: #ffffff;
+  --border-color: #dee2e6;
+
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  --header-height: 60px;
+  --sidebar-width: 200px;
+}
+
+// Global utility classes (e.g., for spacing)
+.margin-top-md { margin-top: var(--spacing-md); }
+.padding-md { padding: var(--spacing-md); }
+
+// Basic button styles for all buttons (overridden by specific button component styles)
+button {
+  cursor: pointer;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}

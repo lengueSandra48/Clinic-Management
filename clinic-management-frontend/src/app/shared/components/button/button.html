@@ -1,0 +1,21 @@
+<button
+  class="app-button"
+  [ngClass]="{
+    'primary': type === 'primary',
+    'secondary': type === 'secondary',
+    'danger': type === 'danger',
+    'link': type === 'link',
+    'small': size === 'small',
+    'large': size === 'large',
+    'loading': loading
+  }"
+  [disabled]="disabled || loading"
+  (click)="onClick()"
+  type="button"
+  [attr.aria-disabled]="disabled || loading"
+  [attr.aria-busy]="loading"
+  [attr.aria-label]="label || null"
+>
+  <span *ngIf="loading" class="spinner"></span>
+  <ng-content></ng-content>
+</button>
