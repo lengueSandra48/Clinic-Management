@@ -10,13 +10,9 @@ import { CoreModule } from './core/core-module';
 import { SharedModule } from './shared/shared-module';
 import { LayoutModule } from './layout/layout-module';
 
-import { PlaceholderDashboard } from './placeholder-dashboard/placeholder-dashboard';
-
-
 @NgModule({
   declarations: [
     App,
-    PlaceholderDashboard,
 
   ],
   imports: [

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <--- Import FormsModule for ngModel
 import { SharedModule } from '../../shared/shared-module'; // Ensure it's imported
 
+
 // FullCalendar Imports
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { AppointmentList } from './appointment-list/appointment-list';

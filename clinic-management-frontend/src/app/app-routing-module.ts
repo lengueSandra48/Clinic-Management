@@ -2,10 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Layout } from './layout/layout';
 
-// --- Placeholder Components for now ---
-// You'll replace these with your actual feature components later
-import { PlaceholderDashboard } from './placeholder-dashboard/placeholder-dashboard';
-// (Make sure these placeholder components are declared in app.module.ts)
 
 const routes: Routes = [
   {
@@ -18,9 +14,13 @@ const routes: Routes = [
       },
 
       //{ path: '**', redirectTo: 'auth/login' },
-
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // Redirect default to dashboard
-      { path: 'dashboard', component: PlaceholderDashboard }, // Your dashboard view
+    { path: '', redirectTo: '/dashboard', pathMatch: 'full' }, // Redirect root to dashboard
+    {
+    path: 'dashboard',
+    // <--- UPDATED lazy load path for dashboard module
+    loadChildren: () => import('./features/dashboard/dashboard.module')
+      .then(m => m.DashboardModule)
+  },
       {
         path: 'patients', // <--- UPDATE THIS ROUTE TO LAZY-LOAD
         loadChildren: () => import('./features/patients/patients-module').then(m => m.PatientsModule)
