@@ -1,0 +1,37 @@
+<div class="padding-md">
+  <div class="header-section">
+    <h2>Appointment Calendar</h2>
+    <div class="actions">
+      <app-button buttonType="primary" (click)="onNewAppointment()">New Appointment</app-button>
+      <app-button buttonType="secondary" routerLink="/appointment/list">View as List</app-button>
+    </div>
+  </div>
+  <p>Visualize and manage appointments by date, doctor, and room.</p>
+
+  <div class="filters">
+    <div class="form-group-inline">
+      <label for="doctorFilter">Filter by Doctor:</label>
+      <select id="doctorFilter" [(ngModel)]="selectedDoctor" (change)="filterAppointments()">
+        <option value="">All Doctors</option>
+        <option *ngFor="let doc of doctors" [value]="doc.name">{{ doc.name }}</option>
+      </select>
+    </div>
+
+    <div class="form-group-inline">
+      <label for="roomFilter">Filter by Room:</label>
+      <select id="roomFilter" [(ngModel)]="selectedRoom" (change)="filterAppointments()">
+        <option value="">All Rooms</option>
+        <option *ngFor="let room of rooms" [value]="room">{{ room }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading-indicator">
+    <p>Loading calendar data...</p>
+    <app-spinner></app-spinner>
+  </div>
+
+  <div *ngIf="!loading">
+    <full-calendar [options]="calendarOptions"></full-calendar>
+  </div>
+</div>
