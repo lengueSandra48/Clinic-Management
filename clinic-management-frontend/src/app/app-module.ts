@@ -11,13 +11,13 @@ import { SharedModule } from './shared/shared-module';
 import { LayoutModule } from './layout/layout-module';
 
 import { PlaceholderDashboard } from './placeholder-dashboard/placeholder-dashboard';
-import { DoctorDashboard } from './features/doctor-dashboard/doctor-dashboard';
+
 
 @NgModule({
   declarations: [
     App,
     PlaceholderDashboard,
-    DoctorDashboard
+
   ],
   imports: [
     BrowserModule,

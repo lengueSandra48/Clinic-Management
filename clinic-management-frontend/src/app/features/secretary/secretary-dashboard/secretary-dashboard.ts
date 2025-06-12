@@ -8,121 +8,116 @@ import { Router } from '@angular/router'; // You would import Router if you use 
   templateUrl: './secretary-dashboard.html',
   styleUrl: './secretary-dashboard.scss'
 })
+
 export class SecretaryDashboard implements OnInit, OnDestroy {
-
-  // --- Properties ---
-
-  // 1. Loading state (common for data fetching)
   loading: boolean = true;
 
-  // 2. Data summary properties (example data structures)
-  appointmentsSummary: {
-    pendingConfirmations: number;
-    upcomingToday: number;
-    totalPending: number;
-  } = {
-    pendingConfirmations: 0,
-    upcomingToday: 0,
-    totalPending: 0
-  };
+  // Appointment Data
+  todayAppointments: number = 0;
+  weekAppointments: number = 0;
 
-  billsSummary: {
-    outstanding: number;
-    dueToday: number;
-    totalAmountDue: number; // e.g., total in currency
-  } = {
-    outstanding: 0,
-    dueToday: 0,
-    totalAmountDue: 0
-  };
+  // Billing Data
+  unpaidBillsCount: number = 0;
+  totalOutstandingAmount: number = 0;
 
-  // 3. A dummy subscription variable for demonstrating ngOnDestroy cleanup
-  // In a real app, you'd manage actual service subscriptions here.
   private dataSubscription: Subscription | undefined;
 
-  // Constructor: Used for dependency injection (e.g., injecting services like HttpClient, Router)
-  // constructor(private router: Router /* Add other services here */) {
-  constructor() {
+  constructor(private router: Router) { // Inject Router
     console.log('SecretaryDashboardComponent: Constructor called');
   }
 
-  // --- Lifecycle Hooks ---
-
-  /**
-   * ngOnInit: Called once after the component's data-bound properties are initialized.
-   * This is the preferred place for initial data retrieval or setup that doesn't rely
-   * on input changes.
-   */
   ngOnInit(): void {
     console.log('SecretaryDashboardComponent: ngOnInit called');
-    this.fetchDashboardData(); // Call method to load data when component initializes
+    this.fetchSecretarySummaryData();
   }
 
-  /**
-   * ngOnDestroy: Called once just before the component is destroyed by Angular.
-   * Use this for cleanup tasks, such as unsubscribing from observables to prevent
-   * memory leaks, clearing timers, or detaching event listeners.
-   */
   ngOnDestroy(): void {
     console.log('SecretaryDashboardComponent: ngOnDestroy called');
-    // Ensure you unsubscribe from any long-lived observables here
     if (this.dataSubscription) {
       this.dataSubscription.unsubscribe();
       console.log('SecretaryDashboardComponent: dataSubscription unsubscribed.');
     }
-    // Add other cleanup code here
   }
 
-  // --- Methods ---
-
   /**
-   * Simulates fetching dashboard summary data from a backend service.
-   * In a real application, this would involve using HttpClient to make API calls.
+   * Simulates fetching summary data for the secretary dashboard.
    */
-  fetchDashboardData(): void {
-    this.loading = true; // Set loading to true while fetching
-    console.log('SecretaryDashboardComponent: Fetching dashboard data...');
+  fetchSecretarySummaryData(): void {
+    this.loading = true;
+    console.log('SecretaryDashboardComponent: Fetching summary data...');
 
-    // Simulate an asynchronous data fetch (e.g., an HTTP request)
-    // In a real scenario, this would be: this.dataSubscription = this.yourService.getDashboardSummary().subscribe(...)
-    this.dataSubscription = new Subscription(); // This is a dummy subscription for the example
-
+    // Simulate API call
+    this.dataSubscription = new Subscription(); // Dummy subscription
     setTimeout(() => {
-      // Simulate receiving data
-      this.appointmentsSummary = {
-        pendingConfirmations: 3,
-        upcomingToday: 5,
-        totalPending: 8
-      };
-      this.billsSummary = {
-        outstanding: 5,
-        dueToday: 2,
-        totalAmountDue: 1250.75
-      };
-      this.loading = false; // Set loading to false once data is received
-      console.log('SecretaryDashboardComponent: Dashboard data fetched.');
-    }, 1500); // Simulate a 1.5 second loading delay
+      // Dummy data for Appointments
+      this.todayAppointments = 5;
+      this.weekAppointments = 28;
+
+      // Dummy data for Billing
+      this.unpaidBillsCount = 12;
+      this.totalOutstandingAmount = 3560.50;
+
+      this.loading = false;
+      console.log('SecretaryDashboardComponent: Summary data fetched.');
+    }, 900); // Simulate 0.9 second loading time
   }
 
-  /**
-   * Handles the action when the "View Appointments" button is clicked.
-   * In a real application, this would typically navigate to the appointments list page.
-   */
-  onViewAppointments(): void {
-    console.log('SecretaryDashboardComponent: "View Appointments" button clicked.');
-    // Example: If using Angular Router:
-    // this.router.navigate(['/secretary/appointments']);
-    alert('Simulating navigation to Appointments list!');
+  // --- Appointment Management Actions ---
+
+  onAddNewAppointment(): void {
+    console.log('Add New Appointment clicked');
+    // Navigate to the appointment creation page/form within the Appointment module
+    this.router.navigate(['/appointment', 'new']); // Assuming '/appointment/new' route
+    alert('Navigating to Add New Appointment form.');
   }
 
-  /**
-   * Handles the action when the "Manage Bills" button is clicked.
-   * In a real application, this would typically navigate to the billing management page.
-   */
-  onManageBills(): void {
-    console.log('SecretaryDashboardComponent: "Manage Bills" button clicked.');
-    // Example: If using Angular Router:
-    // this.router.navigate(['/secretary/bills']);
-    alert('Simulating navigation to Billing Management!');
+  onViewAllAppointments(): void {
+    console.log('View All Appointments clicked');
+    // Navigate to the main appointments list page within the Appointment module
+    this.router.navigate(['/appointment']);
+    alert('Navigating to All Appointments list.');
+  }
+
+  // --- Billing & Payment Actions ---
+
+  onCreateNewBill(): void {
+    console.log('Create New Bill clicked');
+    // Navigate to the bill creation page/form within the Billing module
+    this.router.navigate(['/billing', 'new']); // Assuming '/billing/new' route
+    alert('Navigating to Create New Bill form.');
+  }
+
+  onTrackUnpaidBills(): void {
+    console.log('Track Unpaid Bills clicked');
+    // Navigate to the billing list page, possibly with a filter for unpaid bills
+    this.router.navigate(['/billing'], { queryParams: { status: 'unpaid' } });
+    alert('Navigating to Bills list, filtered by Unpaid.');
+  }
+
+  onViewAllBills(): void {
+    console.log('View All Bills clicked');
+    // Navigate to the main billing list page within the Billing module
+    this.router.navigate(['/billing']);
+    alert('Navigating to All Bills list.');
+  }
+
+  // --- Other Secretary Tasks (Placeholder Actions) ---
+
+  onRegisterNewPatient(): void {
+    console.log('Register New Patient clicked');
+    this.router.navigate(['/patients', 'new']); // Assuming '/patients/new' route
+    alert('Navigating to Register New Patient form.');
+  }
+
+  onViewPatientRecords(): void {
+    console.log('View Patient Records clicked');
+    this.router.navigate(['/patients']); // Navigate to patient list
+    alert('Navigating to Patient Records list.');
+  }
+
+  onManageMessages(): void {
+    console.log('Manage Messages clicked');
+    alert('Simulating navigation to a Messaging/Communication module.');
+    // If you had a 'communication' module, you'd navigate there: this.router.navigate(['/communication']);
   }
 }
