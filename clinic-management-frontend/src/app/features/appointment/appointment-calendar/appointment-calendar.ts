@@ -1,33 +1,36 @@
+// src/app/features/appointment/appointment-calendar/appointment-calendar.component.ts
+
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { CalendarOptions, EventInput } from '@fullcalendar/core'; // <-- CalendarOptions and EventInput from core
+import { CalendarOptions, EventInput } from '@fullcalendar/core';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
-// REMOVE EventDropArg and EventResizeArg from here
-import interactionPlugin, { DateClickArg } from '@fullcalendar/interaction'; // <-- DateClickArg is fine
+import interactionPlugin, { DateClickArg } from '@fullcalendar/interaction';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 // Define an interface for our custom event data (more specific than EventInput)
+// Ensure this is consistent across calendar, form, and detail components
 interface ClinicEvent extends EventInput {
   doctor: string;
   room: string;
+  patientName?: string; // Added for form/detail
+  notes?: string;       // Added for form/detail
 }
 
 @Component({
   selector: 'app-appointment-calendar',
-  standalone: false,
+  standalone: false, // Set to true if using standalone components
   templateUrl: './appointment-calendar.html',
-  styleUrl: './appointment-calendar.scss'
+  styleUrls: ['./appointment-calendar.scss']
 })
-
 export class AppointmentCalendar implements OnInit, OnDestroy {
- @ViewChild('fullcalendar') fullcalendar?: FullCalendarComponent;
+  @ViewChild('fullcalendar') fullcalendar?: FullCalendarComponent;
 
   loading: boolean = true;
   calendarOptions: CalendarOptions;
-  allEvents: ClinicEvent[] = []; // Stores all fetched events
-  filteredEvents: ClinicEvent[] = []; // Events currently displayed on calendar
+  allEvents: ClinicEvent[] = [];
+  filteredEvents: ClinicEvent[] = [];
 
   selectedDoctor: string = '';
   selectedRoom: string = '';
@@ -38,34 +41,32 @@ export class AppointmentCalendar implements OnInit, OnDestroy {
   private dataSubscription: Subscription | undefined;
 
   constructor(private router: Router) {
-    // Initialize calendar options
     this.calendarOptions = {
       plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
-      initialView: 'timeGridWeek', // Default view (can be dayGridMonth, timeGridDay, etc.)
+      initialView: 'timeGridWeek',
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
-      editable: true, // Allow events to be dragged and resized
-      selectable: true, // Allow selection of date/time slots
-      selectMirror: true, // Show a "mirror" event while dragging selection
-      dayMaxEvents: true, // Allow "more" link when too many events
+      editable: true,
+      selectable: true,
+      selectMirror: true,
+      dayMaxEvents: true,
       weekends: true,
-      events: this.filteredEvents, // Binds events to the calendar
-      eventColor: '#007bff', // Default event color
+      events: this.filteredEvents,
+      eventColor: '#007bff',
 
-      // Callbacks for user interaction
-      dateClick: this.handleDateClick.bind(this), // Handle clicking on a date/time slot
-      eventClick: this.handleEventClick.bind(this), // Handle clicking on an existing event
-      eventDrop: this.handleEventDrop.bind(this), // Handle event being dragged and dropped
-      eventResize: this.handleEventResize.bind(this), // Handle event being resized
-      eventAllow: this.eventAllow.bind(this), // Prevent dragging onto occupied slots client-side
-      nowIndicator: true, // Show current time indicator
-      slotMinTime: '08:00:00', // Clinic opens 8 AM
-      slotMaxTime: '18:00:00', // Clinic closes 6 PM
-      expandRows: true, // Expand rows to fill height
-      height: 'auto' // Make calendar height responsive
+      dateClick: this.handleDateClick.bind(this),
+      eventClick: this.handleEventClick.bind(this),
+      eventDrop: this.handleEventDrop.bind(this),
+      eventResize: this.handleEventResize.bind(this),
+      eventAllow: this.eventAllow.bind(this),
+      nowIndicator: true,
+      slotMinTime: '08:00:00',
+      slotMaxTime: '18:00:00',
+      expandRows: true,
+      height: 'auto'
     };
   }
 
@@ -86,8 +87,7 @@ export class AppointmentCalendar implements OnInit, OnDestroy {
     this.loading = true;
     console.log('Fetching initial calendar data...');
 
-    // Simulate API calls for doctors, rooms, and appointments
-    this.dataSubscription = new Subscription(); // Dummy subscription
+    this.dataSubscription = new Subscription();
     setTimeout(() => {
       this.doctors = [
         { id: 1, name: 'Dr. Smith' },
@@ -96,30 +96,37 @@ export class AppointmentCalendar implements OnInit, OnDestroy {
       ];
       this.rooms = ['Room 101', 'Room 102', 'Operating Room'];
 
-      // Dummy appointments
       const today = new Date();
       const tomorrow = new Date(today);
       tomorrow.setDate(today.getDate() + 1);
 
       this.allEvents = [
-        { id: '1', title: 'John Doe - Checkup', start: this.addHours(today, 9), end: this.addHours(today, 9, 30), doctor: 'Dr. Smith', room: 'Room 101', color: '#4CAF50' },
-        { id: '2', title: 'Jane Roe - Follow-up', start: this.addHours(today, 10), end: this.addHours(today, 10, 45), doctor: 'Dr. Jones', room: 'Room 102', color: '#2196F3' },
-        { id: '3', title: 'Patient X - New Patient', start: this.addHours(today, 14), end: this.addHours(today, 15, 0), doctor: 'Dr. Smith', room: 'Room 101', color: '#4CAF50' },
-        { id: '4', title: 'Surgery - Mr. Green', start: this.addHours(tomorrow, 9), end: this.addHours(tomorrow, 11, 0), doctor: 'Dr. Lee', room: 'Operating Room', color: '#F44336' },
-        { id: '5', title: 'Medical Exam - Ms. Blue', start: this.addHours(tomorrow, 11, 30), end: this.addHours(tomorrow, 12, 15), doctor: 'Dr. Smith', room: 'Room 101', color: '#4CAF50' },
+        // Ensure dummy data matches ClinicEvent interface
+        { id: '1', title: 'John Doe - Checkup', start: this.formatDate(today, 9, 0), end: this.formatDate(today, 9, 30), doctor: 'Dr. Smith', room: 'Room 101', patientName: 'John Doe', notes: 'Routine checkup', color: '#4CAF50' },
+        { id: '2', title: 'Jane Roe - Follow-up', start: this.formatDate(today, 10, 0), end: this.formatDate(today, 10, 45), doctor: 'Dr. Jones', room: 'Room 102', patientName: 'Jane Roe', notes: 'Follow-up on recent labs', color: '#2196F3' },
+        { id: '3', title: 'Patient X - New Patient', start: this.formatDate(today, 14, 0), end: this.formatDate(today, 15, 0), doctor: 'Dr. Smith', room: 'Room 101', patientName: 'Patient X', notes: 'First visit, general consultation', color: '#4CAF50' },
+        { id: '4', title: 'Surgery - Mr. Green', start: this.formatDate(tomorrow, 9, 0), end: this.formatDate(tomorrow, 11, 0), doctor: 'Dr. Lee', room: 'Operating Room', patientName: 'Mr. Green', notes: 'Appendectomy', color: '#F44336' },
+        { id: '5', title: 'Medical Exam - Ms. Blue', start: this.formatDate(tomorrow, 11, 30), end: this.formatDate(tomorrow, 12, 15), doctor: 'Dr. Smith', room: 'Room 101', patientName: 'Ms. Blue', notes: 'Annual medical exam', color: '#4CAF50' },
       ];
 
-      this.filterAppointments(); // Apply initial filters (which are none by default)
+      this.filterAppointments();
       this.loading = false;
       console.log('Initial calendar data fetched.');
     }, 1000);
   }
 
-  // Helper to add hours and minutes to a date
-  private addHours(date: Date, hours: number, minutes: number = 0): Date {
-    const newDate = new Date(date);
-    newDate.setHours(hours, minutes, 0, 0);
-    return newDate;
+  // Helper to format date + time into ISO string
+  private formatDate(date: Date, hours: number, minutes: number = 0): string {
+    const d = new Date(date);
+    d.setHours(hours, minutes, 0, 0);
+    return d.toISOString();
+  }
+
+  // Helper to add days to a date
+  private addDays(date: Date, days: number): Date {
+    const d = new Date(date);
+    d.setDate(d.getDate() + days);
+    return d;
   }
 
   filterAppointments(): void {
@@ -130,83 +137,62 @@ export class AppointmentCalendar implements OnInit, OnDestroy {
       return matchDoctor && matchRoom;
     });
 
-    // Update the calendar's events directly
     if (this.fullcalendar) {
       const calendarApi = this.fullcalendar.getApi();
-      calendarApi.removeAllEvents(); // Clear existing events
-      calendarApi.addEventSource(this.filteredEvents); // Add filtered events
-      calendarApi.refetchEvents(); // Ensure calendar re-renders
+      calendarApi.removeAllEvents();
+      calendarApi.addEventSource(this.filteredEvents);
+      calendarApi.refetchEvents();
       console.log('Calendar events updated with filters.');
     }
   }
 
   onNewAppointment(): void {
-    console.log('New Appointment button clicked');
-    alert('Simulating opening a form for a new appointment.');
-    // In a real app, you'd navigate or open a modal:
-    // this.router.navigate(['/appointment', 'new']);
+    console.log('Navigating to new appointment form.');
+    this.router.navigate(['/appointment', 'new']); // Navigate to the new appointment form
   }
-
-  // --- FullCalendar Interaction Handlers ---
 
   handleDateClick(arg: DateClickArg): void {
     console.log('Date clicked:', arg);
-    const newAppointmentTitle = prompt('Enter a title for the new appointment:');
-    if (newAppointmentTitle) {
-      const newEvent: ClinicEvent = {
-        title: newAppointmentTitle,
-        start: arg.dateStr,
-        end: new Date(new Date(arg.dateStr).getTime() + 60 * 60 * 1000).toISOString(), // Default 1 hour
-        allDay: arg.allDay,
-        doctor: this.selectedDoctor || 'Unassigned Doctor', // Use current filter or default
-        room: this.selectedRoom || 'Unassigned Room', // Use current filter or default
-        id: String(this.allEvents.length + 1) // Simple unique ID
-      };
-
-      // Perform conflict check before adding
-      if (this.checkConflict(newEvent, this.allEvents)) {
-        alert('Scheduling conflict detected! This slot is already occupied for the selected doctor/room.');
-        return;
+    // You could pre-populate the form with the clicked date/time
+    this.router.navigate(['/appointment', 'new'], {
+      queryParams: {
+        startDate: arg.dateStr,
+        startTime: new Date(arg.date.setMinutes(arg.date.getMinutes() + 0)).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }),
+        endDate: arg.dateStr,
+        endTime: new Date(arg.date.setMinutes(arg.date.getMinutes() + 60)).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }) // Default 1 hour
       }
-
-      console.log('Adding new event:', newEvent);
-      this.allEvents.push(newEvent); // Add to master list
-      this.filterAppointments(); // Re-filter to display
-      alert('Appointment added successfully!');
-    }
+    });
   }
 
   handleEventClick(arg: any): void {
     console.log('Event clicked:', arg.event.id, arg.event.title);
     const eventId = arg.event.id;
-    alert(`Simulating opening edit form for appointment: ${arg.event.title} (ID: ${eventId})`);
-    // In a real app, you'd navigate or open a modal for editing:
-    // this.router.navigate(['/appointment', eventId, 'edit']);
+    this.router.navigate(['/appointment', eventId]); // Navigate to the appointment detail page
   }
 
-  handleEventDrop(arg: any): void { // Using 'any' as EventDropArg is not exported
+  handleEventDrop(arg: any): void {
     console.log('Event dropped:', arg.event.id, 'from', arg.oldEvent.start, 'to', arg.event.start);
     const movedEvent = arg.event;
-    const oldEvent = arg.oldEvent; // Keep a reference to revert if needed
+    const oldEvent = arg.oldEvent;
 
     const updatedEvent: ClinicEvent = {
-      ...movedEvent.toPlainObject(), // Get all event properties
+      ...movedEvent.toPlainObject(),
       start: movedEvent.start?.toISOString(),
       end: movedEvent.end?.toISOString(),
-      doctor: (movedEvent.extendedProps as any)?.doctor, // Access custom props
+      doctor: (movedEvent.extendedProps as any)?.doctor,
       room: (movedEvent.extendedProps as any)?.room,
+      patientName: (movedEvent.extendedProps as any)?.patientName, // Include patientName
+      notes: (movedEvent.extendedProps as any)?.notes // Include notes
     };
 
-    // Perform conflict check with ALL events, excluding the event itself
     const otherEvents = this.allEvents.filter(e => e.id !== updatedEvent.id);
     if (this.checkConflict(updatedEvent, otherEvents)) {
       alert('Scheduling conflict detected! Reverting event move.');
-      arg.revert(); // Revert the visual change on the calendar
+      arg.revert();
       console.warn('Event move reverted due to conflict.');
       return;
     }
 
-    // Update the event in your master data source (this.allEvents)
     const index = this.allEvents.findIndex(e => e.id === updatedEvent.id);
     if (index !== -1) {
       this.allEvents[index] = updatedEvent;
@@ -215,10 +201,10 @@ export class AppointmentCalendar implements OnInit, OnDestroy {
     }
   }
 
-  handleEventResize(arg: any): void { // Using 'any' as EventResizeArg is not exported
+  handleEventResize(arg: any): void {
     console.log('Event resized:', arg.event.id, 'from', arg.oldEvent.end, 'to', arg.event.end);
     const resizedEvent = arg.event;
-    const oldEvent = arg.oldEvent; // Keep a reference to revert if needed
+    const oldEvent = arg.oldEvent;
 
     const updatedEvent: ClinicEvent = {
       ...resizedEvent.toPlainObject(),
@@ -226,18 +212,18 @@ export class AppointmentCalendar implements OnInit, OnDestroy {
       end: resizedEvent.end?.toISOString(),
       doctor: (resizedEvent.extendedProps as any)?.doctor,
       room: (resizedEvent.extendedProps as any)?.room,
+      patientName: (resizedEvent.extendedProps as any)?.patientName, // Include patientName
+      notes: (resizedEvent.extendedProps as any)?.notes // Include notes
     };
 
-    // Perform conflict check with ALL events, excluding the event itself
     const otherEvents = this.allEvents.filter(e => e.id !== updatedEvent.id);
     if (this.checkConflict(updatedEvent, otherEvents)) {
       alert('Scheduling conflict detected! Reverting event resize.');
-      arg.revert(); // Revert the visual change on the calendar
+      arg.revert();
       console.warn('Event resize reverted due to conflict.');
       return;
     }
 
-    // Update the event in your master data source (this.allEvents)
     const index = this.allEvents.findIndex(e => e.id === updatedEvent.id);
     if (index !== -1) {
       this.allEvents[index] = updatedEvent;
@@ -253,29 +239,25 @@ export class AppointmentCalendar implements OnInit, OnDestroy {
       end: dropInfo.end.toISOString(),
       doctor: (dropInfo.event?.extendedProps as any)?.doctor || this.selectedDoctor || 'Unassigned Doctor',
       room: (dropInfo.event?.extendedProps as any)?.room || this.selectedRoom || 'Unassigned Room',
-      title: dropInfo.event?.title || 'New Event'
+      title: dropInfo.event?.title || 'New Event',
+      patientName: (dropInfo.event?.extendedProps as any)?.patientName,
+      notes: (dropInfo.event?.extendedProps as any)?.notes
     };
 
-    // Filter events to exclude the current event being moved/resized from conflict check
     const eventsToCheckAgainst = this.allEvents.filter(e => e.id !== potentialEvent.id);
 
     const hasConflict = this.checkConflict(potentialEvent, eventsToCheckAgainst);
     if (hasConflict) {
-      return false; // Prevent the drop/resize visually
+      return false;
     }
-    return true; // Allow the drop/resize
+    return true;
   }
 
-  /**
-   * Core conflict detection logic.
-   * Checks if a potential event overlaps with any existing events for the same doctor/room.
-   */
   private checkConflict(potentialEvent: ClinicEvent, existingEvents: ClinicEvent[]): boolean {
     const newStart = new Date(potentialEvent.start as string).getTime();
     const newEnd = new Date(potentialEvent.end as string).getTime();
 
     for (const existingEvent of existingEvents) {
-      // Ensure existing event has start and end times for comparison
       if (!existingEvent.start || !existingEvent.end) {
         continue;
       }
@@ -283,28 +265,19 @@ export class AppointmentCalendar implements OnInit, OnDestroy {
       const existingStart = new Date(existingEvent.start as string).getTime();
       const existingEnd = new Date(existingEvent.end as string).getTime();
 
-      // Check for overlap: (start1 < end2) && (end1 > start2)
       const overlaps = (newStart < existingEnd) && (newEnd > existingStart);
 
-      // Check if it's the same doctor OR same room (or both, depending on clinic rules)
       const sameDoctor = potentialEvent.doctor && existingEvent.doctor && potentialEvent.doctor === existingEvent.doctor;
       const sameRoom = potentialEvent.room && existingEvent.room && potentialEvent.room === existingEvent.room;
 
-      // Conflict if:
-      // 1. Times overlap AND (same doctor OR same room)
-      //    (This is a simplified rule; a real clinic might allow multiple doctors in one room, or one doctor in multiple rooms simultaneously, but this is a common starting point)
-      // For simplicity, let's assume one doctor cannot have two appointments at the same time,
-      // and one room cannot be booked for two appointments at the same time.
       if (overlaps && (sameDoctor || sameRoom)) {
-        // The console.warn line here directly accesses potentialEvent and existingEvent
-        // which are parameters and loop variables, so they are definitely in scope.
         console.warn(`Conflict detected!
           New: ${potentialEvent.title} (${potentialEvent.start} - ${potentialEvent.end}) Doctor: ${potentialEvent.doctor}, Room: ${potentialEvent.room}
           Existing: ${existingEvent.title} (${existingEvent.start} - ${existingEvent.end}) Doctor: ${existingEvent.doctor}, Room: ${existingEvent.room}
         `);
-        return true; // Conflict found
+        return true;
       }
     }
-    return false; // No conflict
+    return false;
   }
 }

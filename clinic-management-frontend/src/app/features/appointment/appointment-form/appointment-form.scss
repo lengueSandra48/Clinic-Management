@@ -1,0 +1,109 @@
+.padding-md {
+  padding: var(--spacing-md);
+  max-width: 800px; /* Adjust max width for forms */
+  margin: 0 auto;
+}
+
+.form-title {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+}
+
+.form-description {
+  color: var(--text-dark);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; // Two columns by default
+  gap: var(--spacing-md); // Gap between grid items
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-weight: 500;
+      color: var(--text-darker);
+      margin-bottom: var(--spacing-xs);
+      .required {
+        color: var(--danger-color);
+        margin-left: 2px;
+      }
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    input[type="time"],
+    select,
+    textarea {
+      padding: var(--spacing-sm);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-sm);
+      font-size: var(--font-size-md);
+      color: var(--text-dark);
+      background-color: var(--background-light);
+
+      &:focus {
+        border-color: var(--primary-color);
+        outline: none;
+        box-shadow: 0 0 0 0.15rem rgba(var(--primary-rgb), 0.25);
+      }
+
+      &:disabled {
+        background-color: var(--background-default);
+        cursor: not-allowed;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .error-message {
+      color: var(--danger-color);
+      font-size: var(--font-size-sm);
+      margin-top: var(--spacing-xs);
+    }
+  }
+
+  // Utility for full-width grid items
+  .full-width {
+    grid-column: 1 / -1;
+  }
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-md);
+  background-color: var(--background-light);
+  border-top: 1px solid var(--border-color);
+  border-bottom-left-radius: var(--border-radius-md); // Match card if directly below
+  border-bottom-right-radius: var(--border-radius-md); // Match card if directly below
+  box-shadow: var(--shadow-sm);
+}
+
+app-spinner {
+  display: block;
+  text-align: center;
+  margin-top: var(--spacing-xl);
+}
+
+@media (max-width: 767px) {
+  .form-grid {
+    grid-template-columns: 1fr; // Single column on small screens
+  }
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
