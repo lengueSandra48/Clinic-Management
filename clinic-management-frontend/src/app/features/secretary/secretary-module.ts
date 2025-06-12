@@ -7,7 +7,7 @@ import { SecretaryDashboard } from './secretary-dashboard/secretary-dashboard';
 
 @NgModule({
   declarations: [
-    SecretaryDashboard
+    SecretaryDashboard,
   ],
   imports: [
     CommonModule,

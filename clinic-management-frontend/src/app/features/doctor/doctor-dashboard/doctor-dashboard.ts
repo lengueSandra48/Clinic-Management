@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router'; // Import Router for navigation
 import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-doctor-dashboard',
@@ -9,76 +11,117 @@ import { Subscription } from 'rxjs';
 })
 
 export class DoctorDashboard implements OnInit, OnDestroy {
-  // --- Properties ---
   loading: boolean = true;
-  upcomingAppointmentsCount: number = 0;
-  newLabResultsCount: number = 0;
-  activePatientsCount: number = 0;
+  doctorName: string = 'John Doe'; // Replace with actual doctor name from authentication
+  searchPatientId: number | null = null; // For direct patient search
 
-  private dataSubscription: Subscription | undefined; // For cleanup
+  // Patient Data
+  totalPatients: number = 0;
+  patientsSeenToday: number = 0;
 
-  constructor() {
+  // Appointment Data
+  appointmentsToday: number = 0;
+  appointmentsThisWeek: number = 0;
+
+  // Prescription & Lab Data
+  prescriptionsToday: number = 0;
+  pendingLabResults: number = 0;
+
+  private dataSubscription: Subscription | undefined;
+
+  constructor(private router: Router) { // Inject Router
     console.log('DoctorDashboardComponent: Constructor called');
   }
 
-  // --- Lifecycle Hooks ---
   ngOnInit(): void {
     console.log('DoctorDashboardComponent: ngOnInit called');
-    this.fetchDashboardData();
+    this.fetchDoctorSummaryData();
   }
 
   ngOnDestroy(): void {
     console.log('DoctorDashboardComponent: ngOnDestroy called');
     if (this.dataSubscription) {
-      this.dataSubscription.unsubscribe(); // Clean up subscriptions
+      this.dataSubscription.unsubscribe();
       console.log('DoctorDashboardComponent: dataSubscription unsubscribed.');
     }
   }
 
-  // --- Methods ---
-
   /**
-   * Simulates fetching doctor dashboard summary data.
+   * Simulates fetching summary data for the doctor dashboard.
    */
-  fetchDashboardData(): void {
+  fetchDoctorSummaryData(): void {
     this.loading = true;
-    console.log('DoctorDashboardComponent: Fetching doctor dashboard data...');
+    console.log('DoctorDashboardComponent: Fetching summary data...');
 
+    // Simulate API call
     this.dataSubscription = new Subscription(); // Dummy subscription
-
     setTimeout(() => {
-      this.upcomingAppointmentsCount = 3;
-      this.newLabResultsCount = 5;
-      this.activePatientsCount = 120;
+      // Dummy data for Patient Management
+      this.totalPatients = 580;
+      this.patientsSeenToday = 3;
+
+      // Dummy data for Appointments
+      this.appointmentsToday = 5;
+      this.appointmentsThisWeek = 28;
+
+      // Dummy data for Prescriptions & Lab Results
+      this.prescriptionsToday = 4;
+      this.pendingLabResults = 7;
+
       this.loading = false;
-      console.log('DoctorDashboardComponent: Doctor dashboard data fetched.');
-    }, 1200); // Simulate 1.2 seconds loading time
+      console.log('DoctorDashboardComponent: Summary data fetched.');
+    }, 900); // Simulate 0.9 second loading time
   }
 
-  /**
-   * Handles the action when 'View Today\'s Schedule' button is clicked.
-   * In a real app, this would navigate to the doctor's appointment calendar.
-   */
-  onViewAppointments(): void {
-    console.log('DoctorDashboardComponent: Navigating to appointments schedule...');
-    alert('Simulating navigation to Doctor\'s Appointments!');
+  // --- Patient Management Actions ---
+
+  onAddNewPatient(): void {
+    console.log('Register New Patient clicked');
+    this.router.navigate(['/patients', 'new']); // Navigate to the new patient form
+    alert('Navigating to Register New Patient form.');
   }
 
-  /**
-   * Handles the action when 'Review Results' button is clicked.
-   * In a real app, this would navigate to the lab results review page.
-   */
-  onReviewLabResults(): void {
-    console.log('DoctorDashboardComponent: Navigating to lab results review...');
-    alert('Simulating navigation to Lab Results Review!');
+  onViewAllPatients(): void {
+    console.log('View All Patients clicked');
+    this.router.navigate(['/patients']); // Navigate to the patient list
+    alert('Navigating to All Patients list.');
   }
 
-  /**
-   * Handles the action when 'View My Patients' button is clicked.
-   * In a real app, this would navigate to a list of patients assigned to this doctor.
-   */
-  onViewMyPatients(): void {
-    console.log('DoctorDashboardComponent: Navigating to my patients list...');
-    alert('Simulating navigation to My Patients List!');
+  onSearchPatient(): void {
+    if (this.searchPatientId) {
+      console.log(`Searching for patient with ID: ${this.searchPatientId}`);
+      this.router.navigate(['/patients', this.searchPatientId]); // Navigate to patient detail
+      alert(`Navigating to patient file for ID: ${this.searchPatientId}.`);
+    } else {
+      alert('Please enter a Patient ID to search.');
+    }
+  }
+
+  // --- Appointment Actions ---
+
+  onViewMyAppointments(): void {
+    console.log('View My Schedule clicked');
+    this.router.navigate(['/appointment'], { queryParams: { doctor: this.doctorName } }); // Filter appointments by current doctor
+    alert('Navigating to My Schedule (Appointments).');
+  }
+
+  onManageAppointments(): void {
+    console.log('Manage Appointments clicked');
+    this.router.navigate(['/appointment']); // Navigate to main appointment management
+    alert('Navigating to general Appointment Management.');
+  }
+
+  // --- Prescriptions & Lab Results Actions ---
+
+  onWritePrescription(): void {
+    console.log('Write Prescription clicked');
+    this.router.navigate(['/prescription', 'new']); // Assuming a '/prescription/new' route
+    alert('Navigating to Write New Prescription form.');
+  }
+
+  onViewLabResults(): void {
+    console.log('View Lab Results clicked');
+    this.router.navigate(['/lab-results']); // Assuming you'll add a '/lab-results' module
+    alert('Navigating to Lab Results for review.');
   }
 }

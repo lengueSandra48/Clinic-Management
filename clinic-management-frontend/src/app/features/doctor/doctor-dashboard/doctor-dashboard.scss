@@ -1,5 +1,4 @@
-/* src/app/features/doctor/doctor-dashboard/doctor-dashboard.component.scss */
-
+/* Reusing common styles from other dashboard components */
 .padding-md {
   padding: var(--spacing-md);
   max-width: 900px;
@@ -44,9 +43,41 @@ app-card {
   overflow: hidden;
 }
 
-app-button {
+.card-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md); // Space above buttons in a row
+  app-button {
+    margin-top: 0; // Remove default app-button margin within this row
+  }
+}
+
+.form-group-inline {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
   margin-top: var(--spacing-md);
-  margin-right: var(--spacing-sm);
+  flex-wrap: wrap;
+
+  label {
+    margin-bottom: 0;
+    color: var(--text-dark);
+    font-weight: 500;
+  }
+
+  input[type="number"] {
+    flex-grow: 1; // Allow input to take available space
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-md);
+    max-width: 200px; // Limit width for number input
+  }
+
+  app-button {
+    margin-top: 0; // Remove default app-button margin within this row
+  }
 }
 
 @media (max-width: 767px) {
@@ -55,5 +86,14 @@ app-button {
   }
   h2 {
     font-size: var(--font-size-lg);
+  }
+  .card-actions-row,
+  .form-group-inline {
+    flex-direction: column;
+    align-items: stretch;
+    app-button, input {
+      width: 100%;
+      max-width: none;
+    }
   }
 }

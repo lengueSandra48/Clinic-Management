@@ -37,15 +37,15 @@
                 </span>
               </td>
               <td class="actions-cell">
-                <app-button buttonType="info" size="small" (click)="onEditUser(user)">Edit</app-button>
+                <app-button buttonType="info" size="sm" (click)="onEditUser(user)">Edit</app-button>
                 <app-button
-                  buttonType="user.status === 'Active' ? 'warning' : 'success'"
-                  size="small"
+                  [buttonType]="user.status === 'Active' ? 'warning' : 'success'"
+                  size="sm"
                   (click)="onToggleUserStatus(user)"
                 >
                   {{ user.status === 'Active' ? 'Deactivate' : 'Activate' }}
                 </app-button>
-                <app-button buttonType="danger" size="small" (click)="onDeleteUser(user)">Delete</app-button>
+                <app-button buttonType="danger" size="sm" (click)="onDeleteUser(user)">Delete</app-button>
               </td>
             </tr>
           </tbody>
