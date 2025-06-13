@@ -20,7 +20,7 @@ const routes: Routes = [
     // <--- UPDATED lazy load path for dashboard module
     loadChildren: () => import('./features/dashboard/dashboard.module')
       .then(m => m.DashboardModule)
-  },
+    },
       {
         path: 'patients', // <--- UPDATE THIS ROUTE TO LAZY-LOAD
         loadChildren: () => import('./features/patients/patients-module').then(m => m.PatientsModule)
@@ -37,6 +37,11 @@ const routes: Routes = [
         path: 'appointment', // <-- ADDED APPOINTMENT ROUTE
         loadChildren: () => import('./features/appointment/appointment-module').then(m => m.AppointmentModule)
       },
+  {
+    path: 'chat', // <--- New route for chat
+    loadChildren: () => import('./features/chat/chat-module')
+      .then(m => m.ChatModule)
+  },
       {
         path: 'billing', // <--- NEW LAZY-LOADED ROUTE FOR BILLING
         loadChildren: () => import('./features/billing/billing-module').then(m => m.BillingModule)

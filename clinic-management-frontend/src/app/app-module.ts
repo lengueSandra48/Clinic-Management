@@ -9,10 +9,15 @@ import { App } from './app';
 import { CoreModule } from './core/core-module';
 import { SharedModule } from './shared/shared-module';
 import { LayoutModule } from './layout/layout-module';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { Chat } from './features/chat/chat';
+
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} }; // Adjust URL to your backen
 
 @NgModule({
   declarations: [
     App,
+    Chat,
 
   ],
   imports: [
@@ -21,7 +26,8 @@ import { LayoutModule } from './layout/layout-module';
     AppRoutingModule,
     CoreModule,
     SharedModule,
-    LayoutModule
+    LayoutModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [
     provideBrowserGlobalErrorListeners()

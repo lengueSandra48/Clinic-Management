@@ -1,0 +1,27 @@
+<div class="chat-container padding-md">
+  <app-card>
+    <div card-header>
+      <h3>Clinic Chat ({{ currentRoom }})</h3>
+      <div class="online-status">
+        <span>Online: (Implement User List)</span>
+      </div>
+    </div>
+    <div card-body class="chat-body">
+      <div class="messages">
+        <div *ngFor="let message of messages" class="message-item"
+             [class.my-message]="message.senderId === currentUser.id">
+          <div class="message-header">
+            <strong>{{ message.senderName }}</strong>
+            <span class="timestamp">{{ message.timestamp | date:'shortTime' }}</span>
+          </div>
+          <p class="message-content">{{ message.message }}</p>
+        </div>
+      </div>
+    </div>
+    <div card-footer class="chat-footer">
+      <input type="text" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()"
+             placeholder="Type your message..." class="message-input">
+      <app-button buttonType="primary" (click)="sendMessage()">Send</app-button>
+    </div>
+  </app-card>
+</div>

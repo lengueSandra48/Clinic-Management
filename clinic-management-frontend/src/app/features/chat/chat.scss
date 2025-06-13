@@ -1,0 +1,110 @@
+.chat-container {
+  max-width: 800px;
+  margin: var(--spacing-xl) auto;
+  height: 70vh; /* Set a height for the chat window */
+  display: flex;
+  flex-direction: column;
+
+  app-card {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden; // Ensure content doesn't overflow card boundaries
+  }
+}
+
+.chat-body {
+  flex-grow: 1;
+  overflow-y: auto; // Make messages scrollable
+  padding: var(--spacing-md);
+  background-color: var(--background-default);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-item {
+  background-color: var(--background-light);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-sm);
+  max-width: 70%;
+  align-self: flex-start;
+  box-shadow: var(--shadow-xs);
+
+  &.my-message {
+    background-color: var(--primary-light);
+    color: var(--text-on-primary);
+    align-self: flex-end; // Align own messages to the right
+  }
+
+  .message-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+
+    strong {
+      color: var(--text-darker);
+      &.my-message strong {
+        color: var(--text-on-primary); // Adjust for readability on primary background
+      }
+    }
+    .timestamp {
+      color: var(--text-muted);
+      margin-left: var(--spacing-sm);
+    }
+  }
+
+  .message-content {
+    margin: 0;
+    font-size: var(--font-size-md);
+    line-height: 1.4;
+  }
+}
+
+.chat-footer {
+  display: flex;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+  background-color: var(--background-light);
+
+  .message-input {
+    flex-grow: 1;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-md);
+
+    &:focus {
+      border-color: var(--primary-color);
+      outline: none;
+      box-shadow: 0 0 0 0.15rem rgba(var(--primary-rgb), 0.25);
+    }
+  }
+
+  app-button {
+    min-width: 80px; // Ensure send button has consistent width
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 767px) {
+  .chat-container {
+    height: 80vh;
+  }
+  .message-item {
+    max-width: 90%; // Allow messages to take more width on small screens
+  }
+  .chat-footer {
+    flex-direction: column; // Stack input and button
+    app-button {
+      width: 100%;
+    }
+  }
+}
