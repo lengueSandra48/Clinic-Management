@@ -1,46 +1,48 @@
+/* src/app/layout/header/header.component.scss */
+
 .app-header {
-  height: var(--header-height);
-  background-color: var(--primary-color);
-  color: var(--text-light);
+  // Your existing header styles
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 var(--spacing-lg);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 999; /* Ensure header stays on top */
-}
+  padding: 1rem 2rem;
+  background-color: var(--primary-color); // Assuming you're using CSS variables
+  color: var(--text-on-primary);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 
-.logo h1 {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
+  .logo {
+    h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+  }
 
-.top-nav {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-md);
+  .top-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; // Adjust spacing between nav items
+  }
 
   .nav-link {
-    color: var(--text-light);
+    color: var(--text-on-primary);
     text-decoration: none;
-    padding: var(--spacing-sm);
-    border-radius: 4px;
-    transition: background-color 0.2s ease;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: color 0.2s ease-in-out, border-bottom 0.2s ease-in-out;
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.15);
+      color: var(--primary-light);
+    }
+
+    &.active-link { /* <-- Add styles for the active link here */
+      font-weight: bold;
+      border-bottom: 2px solid var(--accent-color); // Example highlight
+      color: var(--accent-color); // Or change color for active
     }
   }
 
   .user-info {
-    font-size: 0.9rem;
-    margin-right: var(--spacing-sm);
-  }
-
-  // Styles for the app-button within header
-  app-button {
-    --button-bg-danger: #dc3545; // Override button danger color if needed for context
-    --button-text-light: white;
+    font-style: italic;
+    margin-right: 1rem;
   }
 }
