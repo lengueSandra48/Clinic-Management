@@ -1,0 +1,46 @@
+<div class="padding-md">
+  <div class="header-section">
+    <h2>Role & Permissions Management</h2>
+    <app-button buttonType="primary" (click)="onAddRole()">Add New Role</app-button>
+  </div>
+  <p>Define user roles and manage their associated permissions.</p>
+
+  <div *ngIf="loading" class="loading-indicator">
+    <p>Loading roles...</p>
+    <app-spinner></app-spinner>
+  </div>
+
+  <div *ngIf="!loading">
+    <app-card>
+      <div card-header>Role List</div>
+      <div card-body>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Role Name</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let role of roles">
+              <td>{{ role.id }}</td>
+              <td>{{ role.name }}</td>
+              <td>{{ role.description }}</td>
+              <td class="actions-cell">
+                <app-button buttonType="info" size="sm" (click)="onEditRole(role)">Edit</app-button>
+                <app-button buttonType="danger" size="sm" (click)="onDeleteRole(role)">Delete</app-button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p *ngIf="roles.length === 0" class="no-results-message">No roles found.</p>
+      </div>
+    </app-card>
+  </div>
+
+  <div class="back-link">
+    <app-button buttonType="secondary" routerLink="/admin">Back to Admin Dashboard</app-button>
+  </div>
+</div>

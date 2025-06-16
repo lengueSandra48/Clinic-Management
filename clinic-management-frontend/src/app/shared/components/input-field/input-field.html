@@ -1,0 +1,16 @@
+<div class="input-field-container">
+  <label *ngIf="label" [attr.for]="id">{{ label }}</label> <input
+    [type]="type"
+    class="form-control"
+    [id]="id" [placeholder]="placeholder"
+    [formControl]="control"
+    [ngClass]="{ 'is-invalid': control.invalid && (control.dirty || control.touched) }"
+    autocomplete="off"
+    [attr.aria-describedby]="id + '-error'" [attr.aria-invalid]="control.invalid && (control.dirty || control.touched)"
+    [attr.aria-required]="control.validator ? true : null"
+  />
+
+  <div *ngIf="control.invalid && (control.dirty || control.touched)" class="error-message" [id]="id + '-error'">
+    {{ errorMessage || (control.errors?.['required'] ? 'This field is required.' : 'Invalid input.') }}
+  </div>
+</div>

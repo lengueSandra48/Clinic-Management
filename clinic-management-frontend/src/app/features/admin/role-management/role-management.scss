@@ -1,0 +1,139 @@
+// Reusing core styles for padding, headings, etc.
+.padding-md {
+  padding: var(--spacing-md);
+  max-width: 1200px; /* Wider for tables */
+  margin: 0 auto;
+}
+
+h2 {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+}
+
+p {
+  color: var(--text-dark);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-lg);
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; // Allow wrapping on small screens
+  gap: var(--spacing-md); // Space between elements
+  margin-bottom: var(--spacing-lg);
+
+  h2 {
+    margin-bottom: 0; // Remove extra margin from h2 within this flex container
+  }
+}
+
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl);
+  color: var(--text-muted);
+  font-size: var(--font-size-md);
+  text-align: center;
+
+  app-spinner {
+    margin-top: var(--spacing-md);
+  }
+}
+
+app-card {
+  display: block;
+  margin-bottom: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--border-radius-md);
+  background-color: var(--background-light);
+  overflow-x: auto; /* Allow horizontal scrolling for table on small screens */
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  min-width: 600px; /* Ensure table is wide enough not to crunch content */
+
+  th,
+  td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  th {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: var(--font-size-xs);
+  }
+
+  tbody tr:hover {
+    background-color: var(--background-hover);
+  }
+
+  .actions-cell {
+    white-space: nowrap; /* Prevent buttons from wrapping */
+    app-button {
+      margin-right: var(--spacing-xs);
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .status-active {
+    color: var(--success-color);
+    font-weight: 600;
+  }
+
+  .status-inactive {
+    color: var(--danger-color);
+    font-weight: 600;
+  }
+}
+
+.no-results-message {
+  text-align: center;
+  color: var(--text-muted);
+  padding: var(--spacing-lg);
+  font-style: italic;
+}
+
+.back-link {
+  margin-top: var(--spacing-xl);
+  text-align: center;
+}
+
+app-button {
+  // General button styles, specific overrides handled by component
+  margin-top: var(--spacing-sm); // Default margin for buttons, can be overridden by contexts like .actions-cell
+}
+
+@media (max-width: 767px) {
+  .padding-md {
+    padding: var(--spacing-sm);
+  }
+  h2 {
+    font-size: var(--font-size-lg);
+  }
+  .header-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .data-table {
+    font-size: var(--font-size-xs);
+    th, td {
+      padding: var(--spacing-xs);
+    }
+  }
+}

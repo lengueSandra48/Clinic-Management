@@ -1,0 +1,66 @@
+.alert {
+  padding: 1rem 1.25rem; /* Standard padding */
+  margin-bottom: 1rem; /* Space below alert if stacked */
+  border-radius: 0.25rem; /* Slightly rounded corners */
+  border: 1px solid transparent; /* Default transparent border */
+  position: relative; /* For positioning the close button */
+  display: flex; /* To align message and close button */
+  align-items: center; /* Vertically center content */
+  font-size: 0.95rem; /* Slightly smaller font for alerts */
+
+  .message {
+    flex-grow: 1; /* Allow message to take available space */
+    padding-right: 1.5rem; /* Space for close button if present */
+  }
+
+  .close-button {
+    position: absolute;
+    top: 0.5rem; /* Adjust positioning as needed */
+    right: 0.5rem;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: inherit; /* Inherit color from the alert type */
+    opacity: 0.7;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    span {
+      padding: 0;
+    }
+  }
+
+  /* --- Alert Type Styles --- */
+
+  &.success {
+    background-color: #d4edda; /* Light green background */
+    color: #155724; /* Dark green text */
+    border-color: #c3e6cb; /* Green border */
+  }
+
+  &.error {
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red text */
+    border-color: #f5c6cb; /* Red border */
+  }
+
+  &.warning {
+    background-color: #fff3cd; /* Light yellow background */
+    color: #85640a; /* Dark yellow text */
+    border-color: #ffeeba; /* Yellow border */
+  }
+
+  &.info {
+    background-color: #e2f0fb; /* Light blue background */
+    color: #0c5460; /* Dark blue text */
+    border-color: #bde0fe; /* Blue border */
+  }
+}

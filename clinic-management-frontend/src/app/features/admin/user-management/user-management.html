@@ -1,0 +1,61 @@
+<div class="padding-md">
+  <div class="header-section">
+    <h2>User Management</h2>
+    <app-button buttonType="primary" (click)="onAddUser()">Add New User</app-button>
+  </div>
+  <p>Manage clinic staff accounts, assign roles, and control access.</p>
+
+  <div *ngIf="loading" class="loading-indicator">
+    <p>Loading users...</p>
+    <app-spinner></app-spinner>
+  </div>
+
+  <div *ngIf="!loading">
+    <app-card>
+      <div card-header>User List</div>
+      <div card-body>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.id }}</td>
+              <td>{{ user.username }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.role }}</td>
+              <td>
+                <span [class]="user.status === 'Active' ? 'status-active' : 'status-inactive'">
+                  {{ user.status }}
+                </span>
+              </td>
+              <td class="actions-cell">
+                <app-button buttonType="info" size="sm" (click)="onEditUser(user)">Edit</app-button>
+                <app-button
+                  [buttonType]="user.status === 'Active' ? 'warning' : 'success'"
+                  size="sm"
+                  (click)="onToggleUserStatus(user)"
+                >
+                  {{ user.status === 'Active' ? 'Deactivate' : 'Activate' }}
+                </app-button>
+                <app-button buttonType="danger" size="sm" (click)="onDeleteUser(user)">Delete</app-button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p *ngIf="users.length === 0" class="no-results-message">No users found.</p>
+      </div>
+    </app-card>
+  </div>
+
+  <div class="back-link">
+    <app-button buttonType="secondary" routerLink="/admin">Back to Admin Dashboard</app-button>
+  </div>
+</div>

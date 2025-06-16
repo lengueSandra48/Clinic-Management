@@ -1,0 +1,7 @@
+/* No specific styles needed for app-root itself, as it mostly hosts the layout.
+   Layout styles are handled by layout.component.scss.
+*/
+:host {
+  display: block; // Makes sure the app-root tag occupies its own space
+  height: 100vh; // Ensure it takes full viewport height for sticky footer/layout
+}

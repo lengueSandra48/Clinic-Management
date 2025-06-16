@@ -1,0 +1,47 @@
+<div class="padding-md">
+  <h2>Prescription Management</h2>
+  <p>Overview and management of all patient prescriptions.</p>
+
+  <div *ngIf="loading" class="loading-indicator">
+    <p>Loading prescriptions...</p>
+    <app-spinner></app-spinner>
+  </div>
+
+  <div *ngIf="!loading">
+    <app-card>
+      <div card-header>
+        <div class="card-header-content">
+          <span>Prescription List</span>
+          <app-button buttonType="primary" (click)="onAddPrescription()">Add New Prescription</app-button>
+        </div>
+      </div>
+      <div card-body>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Patient</th>
+              <th>Doctor</th>
+              <th>Date Issued</th>
+              <th>Medications</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let prescription of prescriptions">
+              <td>{{ prescription.id }}</td>
+              <td>{{ prescription.patient }}</td>
+              <td>{{ prescription.doctor }}</td>
+              <td>{{ prescription.dateIssued }}</td>
+              <td>{{ prescription.medications.join(', ') }}</td>
+              <td>
+                <app-button buttonType="secondary" (click)="onViewDetails(prescription)">View</app-button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p *ngIf="prescriptions.length === 0" class="no-results-message">No prescriptions found.</p>
+      </div>
+    </app-card>
+  </div>
+</div>

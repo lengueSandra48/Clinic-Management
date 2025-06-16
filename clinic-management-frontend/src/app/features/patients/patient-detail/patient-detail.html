@@ -1,0 +1,127 @@
+<div class="padding-md">
+  <div class="header-section">
+    <h2>Patient File: {{ patient?.firstName }} {{ patient?.lastName }}</h2>
+    <div class="actions">
+      <app-button buttonType="info" (click)="onEditPatient()">Edit Patient</app-button>
+      <app-button buttonType="primary" (click)="onNewAppointment()">New Appointment</app-button>
+    </div>
+  </div>
+  <p *ngIf="patient">View complete medical history and details for {{ patient.firstName }} {{ patient.lastName }}.</p>
+
+  <app-spinner *ngIf="loading"></app-spinner>
+
+  <div *ngIf="!loading && patient" class="patient-details-grid">
+    <app-card>
+      <div card-header>Personal Information</div>
+      <div card-body>
+        <div class="detail-group">
+          <strong>Patient ID:</strong> <span>{{ patient.id }}</span>
+        </div>
+        <div class="detail-group">
+          <strong>Full Name:</strong> <span>{{ patient.firstName }} {{ patient.lastName }}</span>
+        </div>
+        <div class="detail-group">
+          <strong>Date of Birth:</strong> <span>{{ patient.dateOfBirth | date:'mediumDate' }}</span>
+        </div>
+        <div class="detail-group">
+          <strong>Gender:</strong> <span>{{ patient.gender }}</span>
+        </div>
+        <div class="detail-group">
+          <strong>Address:</strong> <span>{{ patient.address || 'N/A' }}</span>
+        </div>
+        <div class="detail-group">
+          <strong>Phone:</strong> <span>{{ patient.phone || 'N/A' }}</span>
+        </div>
+        <div class="detail-group">
+          <strong>Email:</strong> <span>{{ patient.email || 'N/A' }}</span>
+        </div>
+      </div>
+    </app-card>
+
+    <app-card>
+      <div card-header>Medical History</div>
+      <div card-body>
+        <div class="detail-group-block">
+          <strong>Medical History:</strong>
+          <p>{{ patient.medicalHistory || 'No medical history recorded.' }}</p>
+        </div>
+        <div class="detail-group-block">
+          <strong>Allergies:</strong>
+          <p>{{ patient.allergies || 'No known allergies.' }}</p>
+        </div>
+        <div class="detail-group-block">
+          <strong>Current Medications:</strong>
+          <p>{{ patient.currentMedications || 'No current medications.' }}</p>
+        </div>
+      </div>
+    </app-card>
+
+    <app-card class="full-width-card">
+      <div card-header>
+        <div class="card-header-content">
+          <span>Consultations & Appointments History</span>
+          <app-button buttonType="tertiary" (click)="onViewAllAppointmentsForPatient()">View All</app-button>
+        </div>
+      </div>
+      <div card-body>
+        <p *ngIf="patient.appointments?.length === 0" class="no-data-message">No past appointments found for this patient.</p>
+        <div *ngIf="patient.appointments && patient.appointments.length > 0">
+          <ul class="history-list">
+            <li *ngFor="let appt of patient.appointments">
+              <strong>{{ appt.date | date:'shortDate' }}</strong> - {{ appt.type }} with Dr. {{ appt.doctor }}
+              <app-button buttonType="link" size="sm" (click)="onViewAppointmentDetail(appt.id)">View Details</app-button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </app-card>
+
+    <app-card class="full-width-card">
+      <div card-header>
+        <div class="card-header-content">
+          <span>Prescriptions History</span>
+          <app-button buttonType="tertiary" (click)="onViewAllPrescriptionsForPatient()">View All</app-button>
+        </div>
+      </div>
+      <div card-body>
+        <p *ngIf="patient.prescriptions?.length === 0" class="no-data-message">No prescriptions found for this patient.</p>
+        <div *ngIf="patient.prescriptions && patient.prescriptions.length > 0">
+          <ul class="history-list">
+            <li *ngFor="let prescription of patient.prescriptions">
+              <strong>{{ prescription.date | date:'shortDate' }}</strong> - {{ prescription.medication }} ({{ prescription.dosage }})
+              <app-button buttonType="link" size="sm" (click)="onViewPrescriptionDetail(prescription.id)">View Details</app-button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </app-card>
+
+    <app-card class="full-width-card">
+      <div card-header>
+        <div class="card-header-content">
+          <span>Lab Results History</span>
+          <app-button buttonType="tertiary" (click)="onViewAllLabResultsForPatient()">View All</app-button>
+        </div>
+      </div>
+      <div card-body>
+        <p *ngIf="patient.labResults?.length === 0" class="no-data-message">No lab results found for this patient.</p>
+        <div *ngIf="patient.labResults && patient.labResults.length > 0">
+          <ul class="history-list">
+            <li *ngFor="let result of patient.labResults">
+              <strong>{{ result.date | date:'shortDate' }}</strong> - {{ result.testName }} ({{ result.status }})
+              <app-button buttonType="link" size="sm" (click)="onViewLabResultDetail(result.id)">View Details</app-button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </app-card>
+  </div>
+
+  <div *ngIf="!loading && !patient" class="error-message-center">
+    <p>Patient not found or an error occurred.</p>
+  </div>
+
+  <div class="back-link">
+    <app-button buttonType="secondary" routerLink="/patients">Back to Patient List</app-button>
+  </div>
+</div>

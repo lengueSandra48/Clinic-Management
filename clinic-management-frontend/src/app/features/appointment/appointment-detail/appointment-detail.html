@@ -1,0 +1,51 @@
+<p>appointment-detail works!</p>
+<div class="padding-md">
+  <div class="header-section">
+    <h2 class="detail-title">Appointment Details</h2>
+    <div class="actions">
+      <app-button buttonType="primary" (click)="onEdit()">Edit Appointment</app-button>
+      <app-button buttonType="danger" (click)="onDelete()">Delete Appointment</app-button>
+      <app-button buttonType="secondary" (click)="onBack()">Back to Calendar</app-button>
+    </div>
+  </div>
+  <p class="detail-description">View comprehensive information about this specific appointment.</p>
+
+  <app-spinner *ngIf="loading"></app-spinner>
+
+  <app-card *ngIf="appointment && !loading">
+    <div card-header>Appointment Information</div>
+    <div card-body>
+      <div class="detail-grid">
+        <div class="detail-item">
+          <strong>Patient Name:</strong>
+          <span>{{ appointment.patientName }}</span>
+        </div>
+        <div class="detail-item">
+          <strong>Doctor:</strong>
+          <span>{{ appointment.doctor }}</span>
+        </div>
+        <div class="detail-item">
+          <strong>Room:</strong>
+          <span>{{ appointment.room }}</span>
+        </div>
+        <div class="detail-item">
+          <strong>Start Time:</strong>
+          <span>{{ appointment.start | date:'medium' }}</span>
+        </div>
+        <div class="detail-item">
+          <strong>End Time:</strong>
+          <span>{{ appointment.end | date:'medium' }}</span>
+        </div>
+        <div class="detail-item full-width">
+          <strong>Notes:</strong>
+          <span>{{ appointment.notes || 'N/A' }}</span>
+        </div>
+        </div>
+    </div>
+  </app-card>
+
+  <div *ngIf="!appointment && !loading" class="no-appointment-found">
+    <p>Appointment not found.</p>
+    <app-button buttonType="secondary" (click)="onBack()">Back to Calendar</app-button>
+  </div>
+</div>

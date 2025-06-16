@@ -1,0 +1,152 @@
+// Reusing base padding and spacing from other components
+.padding-md {
+  padding: var(--spacing-md);
+  max-width: 1000px; // A bit wider for details
+  margin: 0 auto;
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; // Allow wrapping on small screens
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+
+  h2 {
+    color: var(--primary-color);
+    margin: 0; // Remove default h2 margin
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-sm); // Space between action buttons
+  flex-wrap: wrap;
+  app-button {
+    margin-top: 0; // Remove default app-button margin
+  }
+}
+
+p {
+  color: var(--text-dark);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-lg);
+}
+
+app-spinner {
+  display: block;
+  margin: var(--spacing-xl) auto;
+}
+
+.patient-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); // Two columns, responsive
+  gap: var(--spacing-xl); // Space between cards
+  margin-top: var(--spacing-md);
+}
+
+app-card {
+  display: block;
+  margin-bottom: 0; // Reset default margin as grid handles spacing
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--border-radius-md);
+  background-color: var(--background-light);
+  overflow: hidden;
+}
+
+.full-width-card {
+  grid-column: 1 / -1; // Make this card span all columns
+}
+
+.detail-group {
+  display: flex;
+  align-items: baseline; // Align text at baseline
+  margin-bottom: var(--spacing-xs);
+  flex-wrap: wrap; // Allow text to wrap if it's too long
+
+  strong {
+    color: var(--text-darker);
+    margin-right: var(--spacing-xs);
+    flex-shrink: 0; // Prevent strong from shrinking
+  }
+
+  span {
+    color: var(--text-dark);
+    flex-grow: 1; // Allow span to take remaining space
+  }
+}
+
+.detail-group-block {
+  margin-bottom: var(--spacing-md);
+
+  strong {
+    display: block; // Make strong a block element
+    color: var(--text-darker);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  p {
+    margin-bottom: 0; // Reset default p margin
+    color: var(--text-dark);
+  }
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    background-color: var(--background-default);
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; // Allow content to wrap
+    gap: var(--spacing-xs); // Space between items
+
+    strong {
+      color: var(--primary-dark);
+    }
+    span {
+      color: var(--text-dark);
+    }
+    app-button {
+      margin: 0; // Reset button margin
+    }
+  }
+}
+
+.no-data-message, .error-message-center {
+  text-align: center;
+  color: var(--text-muted);
+  padding: var(--spacing-lg);
+  font-style: italic;
+}
+
+.back-link {
+  margin-top: var(--spacing-xl);
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .header-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .actions {
+    justify-content: flex-start;
+  }
+  .patient-details-grid {
+    grid-template-columns: 1fr; // Stack cards on small screens
+  }
+  .history-list li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

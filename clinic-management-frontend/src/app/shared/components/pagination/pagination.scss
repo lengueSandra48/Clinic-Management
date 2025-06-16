@@ -1,0 +1,78 @@
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+  justify-content: center; /* Center the pagination control */
+  margin-top: 1.5rem; /* Space above pagination */
+  margin-bottom: 1.5rem; /* Space below pagination */
+
+  .page-item {
+    margin: 0 2px; /* Small space between page items */
+
+    &:first-child {
+      .page-link {
+        border-top-left-radius: 0.25rem;
+        border-bottom-left-radius: 0.25rem;
+      }
+    }
+
+    &:last-child {
+      .page-link {
+        border-top-right-radius: 0.25rem;
+        border-bottom-right-radius: 0.25rem;
+      }
+    }
+
+    &.active .page-link {
+      z-index: 2; /* Bring active link to front */
+      color: #fff;
+      background-color: #007bff; /* Primary blue for active page */
+      border-color: #007bff;
+    }
+
+    &.disabled .page-link {
+      color: #6c757d; /* Greyed out text for disabled links */
+      pointer-events: none; /* Prevent clicks */
+      cursor: not-allowed;
+      background-color: #fff;
+      border-color: #dee2e6;
+      opacity: 0.6; /* Slightly fade out disabled links */
+    }
+
+    .page-link {
+      position: relative;
+      display: block;
+      padding: 0.5rem 0.75rem;
+      margin-left: -1px; /* Overlap borders */
+      line-height: 1.25;
+      color: #007bff; /* Primary blue for links */
+      background-color: #fff;
+      border: 1px solid #dee2e6; /* Light grey border */
+      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      text-decoration: none; /* Remove underline */
+
+      &:hover {
+        z-index: 1; /* Bring hovered link to front without overlapping active */
+        color: #0056b3;
+        background-color: #e9ecef;
+        border-color: #adb5bd;
+      }
+
+      &:focus {
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25); /* Focus ring */
+      }
+    }
+
+    .ellipsis {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 0.75rem;
+      color: #6c757d; /* Grey text for ellipses */
+      border: 1px solid #dee2e6;
+      margin-left: -1px;
+    }
+  }
+}

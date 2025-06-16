@@ -1,0 +1,21 @@
+<div class="padding-md">
+  <h2>Welcome to Your Dashboard!</h2>
+  <p>This is placeholder content for the main dashboard of your Clinic Management System.</p>
+  <p>Here you'll see quick overviews, upcoming appointments, notifications, and key metrics.</p>
+
+  <app-card>
+    <div card-header>Upcoming Appointments</div>
+    <div card-body>
+      <p>No appointments scheduled for today.</p>
+      <app-button buttonType="primary" (click)="onNewAppointment()"> Schedule Appointment</app-button>
+    </div>
+  </app-card>
+
+  <app-card>
+    <div card-header>Patient Statistics</div>
+    <div card-body>
+      <p>Total Patients: 150</p>
+      <p>New Patients This Month: 5</p>
+    </div>
+  </app-card>
+</div>

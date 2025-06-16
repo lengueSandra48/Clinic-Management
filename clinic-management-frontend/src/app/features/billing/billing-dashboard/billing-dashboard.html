@@ -1,0 +1,33 @@
+<div class="padding-md">
+  <h2>Billing & Payments</h2>
+  <p>Manage invoices, track payments, and review financial transactions.</p>
+
+  <app-card>
+    <div card-header>Pending Invoices</div>
+    <div card-body>
+      <p>There are <strong>7</strong> invoices currently outstanding.</p>
+      <app-button buttonType="warning" (click)="onViewInvoices()">View Outstanding Invoices</app-button>
+    </div>
+  </app-card>
+
+  <app-card>
+    <div card-header>Recent Transactions</div>
+    <div card-body>
+      <p>Last 5 payments received:</p>
+      <ul>
+        <li>Payment from Jane Doe - $120.00 (2025-06-09)</li>
+        <li>Payment from John Smith - $75.50 (2025-06-08)</li>
+        <li>Payment from Emily White - $200.00 (2025-06-07)</li>
+      </ul>
+      <app-button buttonType="secondary" (click)="onViewTransactions()">View All Transactions</app-button>
+    </div>
+  </app-card>
+
+  <app-card>
+    <div card-header>Generate New Invoice</div>
+    <div card-body>
+      <p>Quickly create a new invoice for a patient.</p>
+      <app-button buttonType="primary" (click)="onGenerateInvoice()">Generate Invoice</app-button>
+    </div>
+  </app-card>
+</div>

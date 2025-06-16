@@ -1,0 +1,26 @@
+<button
+  class="app-button"
+  [ngClass]="{
+    'btn-primary': buttonType === 'primary',
+    'btn-secondary': buttonType === 'secondary',
+    'btn-danger': buttonType === 'danger',
+    'btn-info': buttonType === 'info',
+    'btn-warning': buttonType === 'warning',
+    'btn-success': buttonType === 'success',
+    'btn-tertiary': buttonType === 'tertiary',
+    'btn-link': buttonType === 'link',
+    'btn-sm': size === 'sm',
+    'btn-md': size === 'md',
+    'btn-lg': size === 'lg',
+    'btn-full-width': fullWidth
+  }"
+  [disabled]="disabled || loading"
+  (click)="onClick()"
+  type="button"
+  [attr.aria-disabled]="disabled || loading"
+  [attr.aria-busy]="loading"
+  [attr.aria-label]="label || null"
+>
+  <span *ngIf="loading" class="spinner"></span>
+  <ng-content></ng-content>
+</button>

@@ -1,0 +1,125 @@
+// General padding for the page content
+.padding-md {
+  padding: var(--spacing-md);
+  max-width: 900px; // Max width for the form container
+  margin: 0 auto; // Center the form
+}
+
+// Form title and description
+.form-title {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  text-align: center;
+}
+
+.form-description {
+  color: var(--text-dark);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+// Loading indicator styling
+app-spinner {
+  display: block; // Make spinner a block element to center easily
+  margin: var(--spacing-xl) auto;
+}
+
+// Styling for each card (reusing app-card component)
+app-card {
+  display: block; // Ensure it takes full width
+  margin-bottom: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--border-radius-md);
+  background-color: var(--background-light);
+  overflow: hidden; // Ensures rounded corners are respected by content
+}
+
+// Grid layout for form groups within a card body
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); // Responsive grid
+  gap: var(--spacing-lg) var(--spacing-xl); // Row and column gap
+}
+
+// Styling for individual form groups (label + input/select)
+.form-group {
+  margin-bottom: 0; // Reset margin if grid handles spacing
+
+  label {
+    display: block; // Label on its own line
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-dark);
+    font-weight: 500;
+  }
+
+  .required {
+    color: var(--danger-color); // Red asterisk for required fields
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="date"],
+  input[type="email"],
+  select,
+  textarea {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-md);
+    box-sizing: border-box; // Include padding in width
+    &:focus {
+      border-color: var(--primary-color);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.2); // Light shadow on focus
+    }
+    &.ng-invalid.ng-touched { // Style invalid fields after interaction
+      border-color: var(--danger-color);
+    }
+  }
+
+  textarea {
+    resize: vertical; // Allow vertical resizing
+  }
+
+  &.full-width {
+    grid-column: 1 / -1; // Make element span all columns in the grid
+  }
+
+  // Error message styling
+  .error-message {
+    color: var(--danger-color);
+    font-size: var(--font-size-xs);
+    margin-top: var(--spacing-xs);
+  }
+}
+
+// Actions at the bottom of the form
+.form-actions {
+  display: flex;
+  justify-content: flex-end; // Align buttons to the right
+  gap: var(--spacing-md); // Space between buttons
+  margin-top: var(--spacing-xl); // Space above buttons
+
+  app-button {
+    margin-top: 0; // Reset button default margin if it's in a flex container
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 767px) {
+  .padding-md {
+    padding: var(--spacing-sm);
+  }
+  .form-grid {
+    grid-template-columns: 1fr; // Stack columns on small screens
+    gap: var(--spacing-md); // Reduce gap
+  }
+  .form-actions {
+    flex-direction: column; // Stack buttons
+    align-items: stretch; // Stretch buttons to full width
+  }
+}

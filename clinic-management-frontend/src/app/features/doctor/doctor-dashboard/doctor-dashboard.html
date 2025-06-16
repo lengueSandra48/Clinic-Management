@@ -1,0 +1,52 @@
+<div class="padding-md">
+  <h2>Doctor Portal</h2>
+  <p>Welcome, Dr. {{ doctorName }}. Here's an overview of your patient and clinic activities.</p>
+
+  <div *ngIf="loading" class="loading-indicator">
+    <p>Loading doctor dashboard summaries...</p>
+    <app-spinner></app-spinner>
+  </div>
+
+  <div *ngIf="!loading">
+    <app-card>
+      <div card-header>Patient Management</div>
+      <div card-body>
+        <p>Total active patients: <strong>{{ totalPatients }}</strong></p>
+        <p>Patients seen today: <strong>{{ patientsSeenToday }}</strong></p>
+        <div class="card-actions-row">
+          <app-button buttonType="primary" (click)="onAddNewPatient()">Register New Patient</app-button>
+          <app-button buttonType="secondary" (click)="onViewAllPatients()">View All Patients</app-button>
+        </div>
+        <div class="form-group-inline">
+          <label for="patientSearch">Search Patient by ID:</label>
+          <input type="number" id="patientSearch" [(ngModel)]="searchPatientId" placeholder="Enter Patient ID">
+          <app-button buttonType="info" (click)="onSearchPatient()" [disabled]="!searchPatientId">Go</app-button>
+        </div>
+      </div>
+    </app-card>
+
+    <app-card>
+      <div card-header>Appointments Overview</div>
+      <div card-body>
+        <p>Appointments today: <strong>{{ appointmentsToday }}</strong></p>
+        <p>Upcoming appointments this week: <strong>{{ appointmentsThisWeek }}</strong></p>
+        <div class="card-actions-row">
+          <app-button buttonType="secondary" (click)="onViewMyAppointments()">View My Schedule</app-button>
+          <app-button buttonType="info" (click)="onManageAppointments()">Manage Appointments</app-button>
+        </div>
+      </div>
+    </app-card>
+
+    <app-card>
+      <div card-header>Prescriptions & Diagnostics</div>
+      <div card-body>
+        <p>Prescriptions written today: <strong>{{ prescriptionsToday }}</strong></p>
+        <p>Pending lab results for review: <strong>{{ pendingLabResults }}</strong></p>
+        <div class="card-actions-row">
+          <app-button buttonType="secondary" (click)="onWritePrescription()">Write Prescription</app-button>
+          <app-button buttonType="info" (click)="onViewLabResults()">View Lab Results</app-button>
+        </div>
+      </div>
+    </app-card>
+  </div>
+</div>

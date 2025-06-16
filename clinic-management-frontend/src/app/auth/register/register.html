@@ -1,0 +1,27 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>Register for a New Account</h2>
+    <form>
+      <div class="form-group">
+        <label for="reg-username">Username:</label>
+        <input type="text" id="reg-username" name="reg-username" placeholder="Choose a username">
+      </div>
+      <div class="form-group">
+        <label for="reg-email">Email:</label>
+        <input type="email" id="reg-email" name="reg-email" placeholder="Enter your email">
+      </div>
+      <div class="form-group">
+        <label for="reg-password">Password:</label>
+        <input type="password" id="reg-password" name="reg-password" placeholder="Choose a password">
+      </div>
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password">
+      </div>
+      <button type="submit" class="auth-button">Register</button>
+    </form>
+    <p class="auth-links">
+      Already have an account? <a routerLink="/auth/login">Login here</a>
+    </p>
+  </div>
+</div>

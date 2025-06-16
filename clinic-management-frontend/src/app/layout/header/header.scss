@@ -1,0 +1,48 @@
+/* src/app/layout/header/header.component.scss */
+
+.app-header {
+  // Your existing header styles
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--primary-color); // Assuming you're using CSS variables
+  color: var(--text-on-primary);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+  .logo {
+    h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+  }
+
+  .top-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; // Adjust spacing between nav items
+  }
+
+  .nav-link {
+    color: var(--text-on-primary);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: color 0.2s ease-in-out, border-bottom 0.2s ease-in-out;
+
+    &:hover {
+      color: var(--primary-light);
+    }
+
+    &.active-link { /* <-- Add styles for the active link here */
+      font-weight: bold;
+      border-bottom: 2px solid var(--accent-color); // Example highlight
+      color: var(--accent-color); // Or change color for active
+    }
+  }
+
+  .user-info {
+    font-style: italic;
+    margin-right: 1rem;
+  }
+}

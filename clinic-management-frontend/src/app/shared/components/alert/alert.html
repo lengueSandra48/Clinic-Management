@@ -1,0 +1,5 @@
+<div class="alert" [ngClass]="type">
+  <span class="message">{{ message }}</span>
+  <button *ngIf="closable" type="button" class="close-button" aria-label="Close alert" (click)="onClose()">
+    <span aria-hidden="true">&times;</span> </button>
+</div>

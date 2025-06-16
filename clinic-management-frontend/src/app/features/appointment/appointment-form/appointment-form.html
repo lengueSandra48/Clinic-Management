@@ -1,0 +1,100 @@
+<div class="padding-md">
+  <h2 class="form-title">{{ isEditMode ? 'Edit Appointment' : 'Schedule New Appointment' }}</h2>
+  <p class="form-description">
+    {{ isEditMode ? 'Modify the details of this appointment.' : 'Fill in the details to schedule a new appointment.' }}
+  </p>
+
+  <app-spinner *ngIf="loading"></app-spinner>
+
+  <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()" *ngIf="!loading">
+    <app-card>
+      <div card-header>Appointment Details</div>
+      <div card-body>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="patientName">Patient Name <span class="required">*</span>:</label>
+            <select id="patientName" formControlName="patientName">
+              <option value="">Select Patient</option>
+              <option *ngFor="let patient of patients" [value]="patient.name">{{ patient.name }}</option>
+            </select>
+            <div *ngIf="f['patientName'].invalid && (f['patientName'].dirty || f['patientName'].touched)" class="error-message">
+              <div *ngIf="f['patientName'].errors?.['required']">Patient Name is required.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="doctor">Doctor <span class="required">*</span>:</label>
+            <select id="doctor" formControlName="doctor">
+              <option value="">Select Doctor</option>
+              <option *ngFor="let doc of doctors" [value]="doc.name">{{ doc.name }}</option>
+            </select>
+            <div *ngIf="f['doctor'].invalid && (f['doctor'].dirty || f['doctor'].touched)" class="error-message">
+              <div *ngIf="f['doctor'].errors?.['required']">Doctor is required.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="room">Room <span class="required">*</span>:</label>
+            <select id="room" formControlName="room">
+              <option value="">Select Room</option>
+              <option *ngFor="let rm of rooms" [value]="rm">{{ rm }}</option>
+            </select>
+            <div *ngIf="f['room'].invalid && (f['room'].dirty || f['room'].touched)" class="error-message">
+              <div *ngIf="f['room'].errors?.['required']">Room is required.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="startDate">Start Date <span class="required">*</span>:</label>
+            <input id="startDate" type="date" formControlName="startDate">
+            <div *ngIf="f['startDate'].invalid && (f['startDate'].dirty || f['startDate'].touched)" class="error-message">
+              <div *ngIf="f['startDate'].errors?.['required']">Start Date is required.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="startTime">Start Time <span class="required">*</span>:</label>
+            <input id="startTime" type="time" formControlName="startTime">
+            <div *ngIf="f['startTime'].invalid && (f['startTime'].dirty || f['startTime'].touched)" class="error-message">
+              <div *ngIf="f['startTime'].errors?.['required']">Start Time is required.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="endDate">End Date <span class="required">*</span>:</label>
+            <input id="endDate" type="date" formControlName="endDate">
+            <div *ngIf="f['endDate'].invalid && (f['endDate'].dirty || f['endDate'].touched)" class="error-message">
+              <div *ngIf="f['endDate'].errors?.['required']">End Date is required.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="endTime">End Time <span class="required">*</span>:</label>
+            <input id="endTime" type="time" formControlName="endTime">
+            <div *ngIf="f['endTime'].invalid && (f['endTime'].dirty || f['endTime'].touched)" class="error-message">
+              <div *ngIf="f['endTime'].errors?.['required']">End Time is required.</div>
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <div *ngIf="appointmentForm.errors?.['invalidDateTimeRange'] && (f['endTime'].dirty || f['endTime'].touched)" class="error-message">
+              End date/time must be after start date/time.
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="notes">Notes:</label>
+            <textarea id="notes" formControlName="notes" rows="4" placeholder="Any specific instructions or patient requests..."></textarea>
+          </div>
+        </div>
+      </div>
+    </app-card>
+
+    <div class="form-actions">
+      <app-button buttonType="primary" type="submit" [disabled]="appointmentForm.invalid">
+        {{ isEditMode ? 'Update Appointment' : 'Schedule Appointment' }}
+      </app-button>
+      <app-button buttonType="secondary" type="button" (click)="onCancel()">Cancel</app-button>
+    </div>
+  </form>
+</div>
