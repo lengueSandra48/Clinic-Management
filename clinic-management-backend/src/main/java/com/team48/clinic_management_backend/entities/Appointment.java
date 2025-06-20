@@ -18,9 +18,11 @@ public class Appointment {
     private Long id;
 
     @Column(nullable = false)
-    private LocalDateTime startime;
+    private LocalDateTime starTime;
     @Column(nullable = false)
-    private LocalDateTime endtime;
+    private LocalDateTime endTime;
+
+    private String cancellationReason;
 
     @Enumerated(EnumType.STRING)
     private AppointmentStatus status;
@@ -31,9 +33,5 @@ public class Appointment {
     @ManyToOne
     private Doctor doctor;
 
-    // Business rule: Prevent overlapping appointments (validated in Service layer)
-    public boolean overlapsWith(Appointment other) {
-        return this.startime.isBefore(other.endtime) &&
-                this.endtime.isAfter(other.startime);
-    }
+
 }

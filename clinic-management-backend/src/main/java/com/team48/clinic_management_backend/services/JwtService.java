@@ -37,7 +37,7 @@ public class JwtService {
         return Jwts.parser()  // ✅ Updated method for JJWT 0.12.6
                 .verifyWith((SecretKey) getSignInKey())  // ✅ `verifyWith()` replaces `setSigningKey()`
                 .build()  // ✅ New requirement in JJWT 0.12.6
-                .parseSignedClaims(token)  // ✅ Use `parseSignedClaims()` instead of `parseClaimsJws()`
+                .   parseSignedClaims(token)  // ✅ Use `parseSignedClaims()` instead of `parseClaimsJws()`
                 .getPayload();  // ✅ Extract claims correctly
     }
     public long getExpirationTime(){

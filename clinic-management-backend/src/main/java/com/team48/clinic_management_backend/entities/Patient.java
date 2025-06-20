@@ -22,7 +22,7 @@ public class Patient {
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
     private List<Appointment> appointments;
 
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
-    private List<MedicalRecords> medicalHistory;
+    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
+    private MedicalRecords medicalRecord;
 
 }

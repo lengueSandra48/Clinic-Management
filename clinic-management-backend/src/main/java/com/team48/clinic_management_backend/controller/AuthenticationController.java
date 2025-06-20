@@ -6,6 +6,7 @@ import com.team48.clinic_management_backend.dtos.RegisterUserDto;
 import com.team48.clinic_management_backend.entities.User;
 import com.team48.clinic_management_backend.services.AuthenticationService;
 import com.team48.clinic_management_backend.services.JwtService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +22,7 @@ public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
     @PostMapping("/signup")
-    public ResponseEntity<User> register(@RequestBody RegisterUserDto registerUserDto){
+    public ResponseEntity<User> register(@Valid @RequestBody RegisterUserDto registerUserDto){
         User registeredUser = authenticationService.signup(registerUserDto);
         return ResponseEntity.ok(registeredUser);
     }

@@ -22,7 +22,7 @@ public class MedicalRecords {
     @OneToMany(mappedBy = "medicalRecord", cascade = CascadeType.ALL)
     private List<Allergy> allergies = new ArrayList<>();
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
 
